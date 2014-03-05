@@ -1,0 +1,26 @@
+{
+  "name": "freegees",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": ">=0.10.2"
+  },
+  "dependencies": {
+    "express": "3.4.*",
+    "connect": "2.*",
+    "less-middleware": "*",
+    "hogan-express": "~0.5.2",
+    "formidable": "~1.0.14",
+    "mongoose": "~3.8.5",
+    "supergoose": "~0.2.2",
+    "passport": "~0.2.0",
+    "passport-google-oauth": "~0.1.5",
+    "nedb": "~0.10.4"
+  },
+  "scripts": {
+    "start": "node app.js --websocket-port=$OPENSHIFT_NODEJS_PORT --log-level=1"
+	}
+}

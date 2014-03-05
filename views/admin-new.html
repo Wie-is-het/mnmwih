@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style-admin.css">
+    {{!--<link rel="stylesheet" href="style.css">--}}
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{title}}</h1>
+    </div>
+    <form class="container" id="block-add-form">
+        <div class="row">
+            <div class="col-xs-6">
+                <label for="block-width-select">Width</label>
+                <select class="form-control block-width-select" id="block-width-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <label for="block-width-select">Height</label>
+                <select class="form-control block-height-select" id="block-height-select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-6">
+                <label for="block-text-select">Text</label>
+                <input type="text" class="form-control block-text-select" id="block-text-select">
+            </div>
+            <div class="col-xs-6">
+                <label for="block-text-select">Color</label>
+                <input type="text" class="form-control block-color-select" id="block-color-select" value="#EFEFEF" onclick="colorPicker(event)">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-6">
+                <label for="block-text-select">Link</label>
+                <input type="text" class="form-control block-link-select" id="block-link-select">
+            </div>
+            <div class="col-xs-6">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="block-text-select">Icon</label>
+                        <input type="file" class="form-control block-icon-select" id="imgUpload" name="displayImage">
+                        <input type="hidden" class="block-icon-url">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 icon-preview">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-xs-8"></div>
+            <div class="col-xs-4">
+                <input type="submit" value="Add a block" class="btn btn-default pull-right">
+            </div>
+        </div>
+    </form>
+    <br>
+    <div class="container">
+        <div class="block-container">
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='2' data-ss-rowspan='2' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='2' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='2' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+            <div class="block" data-ss-colspan='1' data-ss-rowspan='1' data-link="#">
+                <div class="block-text">AB</div>
+                <div class="block-remove">&times;</div>
+            </div>
+        </div>
+        <br>
+        <button class="btn btn-warning shuffle">Shuffle</button>
+        <button class="btn btn-danger destroy">Reset</button>
+        <button class="btn btn-primary weather">Add weather Tile</button>
+        <button class="btn btn-success tiles-save">Save</button>
+    </div>
+    <br>
+    <br>
+
+    <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.shapeshift.min.js"></script>
+    <script type="text/javascript" src="/public/js/vendor/jquery.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/public/js/color.js"></script>
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/upload.js"></script>
+
+</body>
+
+</html>
