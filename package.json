@@ -22,5 +22,6 @@
   },
   "scripts": {
     "start": "node app.js --websocket-port=$OPENSHIFT_NODEJS_PORT --log-level=1"
-	}
+	},
+	"main":"app.js"
 }
