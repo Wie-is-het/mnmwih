@@ -9,6 +9,7 @@
     "node": ">=0.10.2"
   },
   "dependencies": {
+    "optimist": "*.*",
     "express": "3.4.*",
     "connect": "2.*",
     "less-middleware": "*",
@@ -20,8 +21,5 @@
     "passport-google-oauth": "~0.1.5",
     "nedb": "~0.10.4"
   },
-  "scripts": {
-    "start": "node app.js --websocket-port=$OPENSHIFT_NODEJS_PORT --log-level=1"
-	},
 	"main":"app.js"
 }
