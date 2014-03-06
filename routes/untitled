@@ -1,0 +1,30 @@
+{
+    "data": [{
+        name: "Sex",
+        possibilities: ["male", "female"],
+        name: "Glasses",
+        possibilities: ["yes", "no"],
+        name: "Facial Hair",
+        possibilities: ["yes", "no"],
+        name: "Hair Color",
+        possibilities: ["Brown", "Blonde", "Ginger", "Black"]
+    }]
+}
+}
+
+{
+  people: [
+    {"name": "sex", "possibilities": ["male", "female"]},
+   	{"name": "Glasses", "possibilities": ["yes", "no"]},
+   	{"name": "Facial hair", "possibilities": ["yes", "no"]},
+   	{"name": "Hair color", "possibilities": ["Brown", "Blonde", "Ginger", "Black"]}
+  ]
+}
+
+
+var obj = {
+  arr: [
+    {"id": "1", "details": {"name": "X", "type":"Y" }},
+    {"id": "2", "details": {"name": "aName", "type":"something" }}
+  ]
+}

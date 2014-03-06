@@ -1,27 +1,44 @@
 /*
+For the dramatic resizing of imgur images
+*/
+
+function imgurThumb(imgurl, size){
+/*
+size types:
+s   Small Square    90x90   No
+b   Big Square  160x160 No
+t   Small Thumbnail 160x160 Yes
+m   Medium Thumbnail    320x320 Yes
+l   Large Thumbnail 640x640 Yes
+h   Huge Thumbnail  1024x1024   Yes
+*/
+
+    var ext = imgurl.split('.').pop();
+    var thumb = imgurl.substr(0, imgurl.lastIndexOf(".")) + size + "." + ext;
+    return thumb;
+}
+
+/*
  *
- * For the uploading of images to the server
+ * For the uploading of images to Imgur
  *
  */
-if (document.getElementById("imgUpload") != undefined) {
-    var files = document.getElementById("imgUpload");
+if (document.getElementById("imgInput") != undefined) {
+    var files = document.getElementById("imgInput");
 
     //process files
-    files.addEventListener("change", function(e) {
+    files.addEventListener("change", function (e) {
         var files = e.target.files;
         for (i = 0; i < files.length; i++) {
             var file = files[i];
-            console.log(file);
             if (file.type.match(/image.*/)) { //kijken of het wel een afbeelding is
                 upload(file);
             } else {
-                console.log('not an image');
-                $('.icon-preview').empty().append('The file must be an image');
+                $('#preview').empty().append('NOT AN IMAGE');
             }
         }
     }, false);
 }
-
 
 function upload(file) {
 
@@ -35,6 +52,8 @@ function upload(file) {
     // Let's build a FormData object
     var fd = new FormData();
     fd.append("image", file); // Append the file
+    fd.append("key", "9b593c965f952aebaed7859ef4d4b297bc37b8c0");
+
 
     if (window.XMLHttpRequest) {
         // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -45,13 +64,12 @@ function upload(file) {
     }
 
     //het eigenlijke uploaden
-    xhr.open("POST", "/upload");
+    xhr.open("POST", "https://api.imgur.com/3/upload.json");
 
     //loading indicator when loading
-    // $('#preview').empty().append("<img src='/public/images/loading.gif' />");
+    $('#preview').empty().append("<img src='/public/img/012.gif' />&nbsp;Uploading...");
 
     xhr.onreadystatechange = handleRequestStateChange;
-    xhr.upload.onprogress = updateProgress;
 
     function handleRequestStateChange() {
 
@@ -59,38 +77,31 @@ function upload(file) {
         if (xhr.readyState == 4) {
             // continue only if HTTP status is "OK"
             if (xhr.status == 200) {
-                $('.icon-preview').empty();
                 try {
                     // retrieve the response
-                    // var res = JSON.parse(xhr.responseText);
-                    console.log(xhr.responseText);
-                    $('.icon-preview').empty().append('<img src="/images/'+xhr.responseText+'.png">')
-                    $('.block-icon-url').val('/images/'+xhr.responseText+'.png');
-                    //
+                    var imgurLink = JSON.parse(xhr.responseText).data.link;
+                    //console.log(imgurLink);
+                    $('#preview').empty().append("<img src='" + imgurLink + "' alt='image'/>");
+                    $('#img_url_result').val(imgurLink);
+                    $('#img_url_result_thumb').val(imgurThumb(imgurLink,'b'));
+                    $('.submit_with_photo').removeClass('disabled');
                 } catch (e) {
                     // display error message
-                    $('.icon-preview').empty().append("Error reading the server response: " + e.toString());
+                    console.log("Error reading the response: " + e.toString());
                 }
             } else {
                 // display status message
-                $('.icon-preview').empty().append("There was a problem retrieving the data from the server:\n" +
+                console.log("There was a problem retrieving the data:\n" +
                     xhr.statusText);
             }
         }
     }
 
     //Headers deftig zetten en data doorsturen
-    xhr.setRequestHeader("enctype", "multipart/form-data");
+    xhr.setRequestHeader("authorization", "Client-ID 55c657eb81949e8");
     xhr.send(fd);
 
-    function updateProgress(evt) {
-        if (evt.lengthComputable) { //evt.loaded the bytes browser receive
-            //evt.total the total bytes seted by the header
-            //
-            var percentComplete = (evt.loaded / evt.total) * 100 + '%';
-
-            $('.progress-bar').css("width", percentComplete);
-        }
-    }
-
 }
+//  help-urls:
+//  http://techslides.com/html5-image-zip-and-directory-upload-to-imgur/
+//  http://www.cristiandarie.ro/asp-ajax/Async.html
