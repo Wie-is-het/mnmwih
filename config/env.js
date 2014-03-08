@@ -1,10 +1,10 @@
 var util = require(__dirname + '/../libs/util.js'),
     path = require('path'),
-    hogan = require('hogan-express');
+    exphbs  = require('express3-handlebars');
 
 module.exports = function (express, app) {
 
-    app.engine('html', require('hogan-express'));
+    app.engine('handlebars', exphbs({defaultLayout: 'main'}));
     // app.enable('view cache');
 
     // Common configuration
@@ -12,7 +12,7 @@ module.exports = function (express, app) {
 
         // Configure hogan template engine
         app.set('views', path.join(__dirname, '/../views/'));
-        app.set('view engine', 'html');
+        app.set('view engine', 'handlebars');
 
         app.use(app.router);
 

@@ -7,3 +7,5 @@ body.main .nav>li>a{padding:50px;font-size:3rem;font-weight:800;width:50%;margin
 .nav>li>a.active{color:#39b9e9;background:#a7f041}
 .logo{position:absolute;top:20px;left:20px}
 #preview img{max-width:200px;max-height:150px}
+.red-border{border:solid #f00 2px}
+.hiddenStuff{visibility:hidden}

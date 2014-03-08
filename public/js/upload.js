@@ -48,11 +48,12 @@ function upload(file) {
 
     if (!file || !file.type.match(/image.*/)) return;
 
+    var keys = ['8ebd699a231710ad24b5efef627ec6cf7fb78194', '66bde52ced75967332715254605cb2f05e91641a','fcf82c8981a518bcacaccd16cb832d7df83ec7e7']
 
     // Let's build a FormData object
     var fd = new FormData();
     fd.append("image", file); // Append the file
-    fd.append("key", "9b593c965f952aebaed7859ef4d4b297bc37b8c0");
+    fd.append("key", keys[Math.floor(Math.random()*keys.length)]);
 
 
     if (window.XMLHttpRequest) {

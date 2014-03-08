@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+</head>
+
+<body>
+<div class="logo">
+ <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
+ </div>
+<!-- <a class="btn btn-default" href="/" style="margin: 1%;">Back</a> -->
+    <div class="container" style="width: 50%;">
+        <h1>{{title}}</h1>
+
+        <form role="form" id="saveForm" name="saveForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <label>1. Choose your image</label>
+                    <input type="file" id="imgInput">
+                    <br>
+                    <div id="preview"></div>
+                    <input type="hidden" name="image_url" value="" id="img_url_result">
+                    <br>
+                    <input type="hidden" name="image_url_thumb" value="" id="img_url_result_thumb">
+                    <br>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>2. Give your image a Name</label>
+                    <br>
+                    <input type="text" required class="form-control" style="max-width: 300px;" id="image-name">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12 categories">
+                    <label>3. Choose the categorie</label>
+                    <br>
+                    <ul class="nav nav-pills">
+                        {{#categories}}
+                        <li>
+                            <a href="#" class="categorie-link" data-categorie="{{.}}">{{.}}</a>
+                        </li>
+                        {{/categories}}
+                    </ul>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <label>4. Choose an attribute from each group</label>
+                    <div class="attribute-options people-options">
+
+                    {{#properties.people}}
+                    <div class="group">
+                        <h5>{{name}}</h5>
+                        <ul class="nav nav-pills nav-pill">
+                        {{#possibilities}}
+                        <li>
+                            <a href="#" class="property" data-group="{{name}}" data-value="{{.}}">{{.}}</a>
+                        </li>
+                        {{/possibilities}}
+                        </ul>
+                    </div>
+                    {{/properties.people}}
+                    </div>
+                    <div class="attribute-options object-options">
+                    {{#properties.object}}
+                    <div class="group">
+                        <h5>{{name}}</h5>
+                        <ul class="nav nav-pills">
+                        {{#possibilities}}
+                        <li>
+                            <a href="#" class="property" data-group="{{name}}" data-value="{{.}}">{{.}}</a>
+                        </li>
+                        {{/possibilities}}
+                        </ul>
+                    </div>
+                    {{/properties.object}}
+                    </div>
+                </div>
+            </div>
+            <br>
+             <div class="row">
+             <div class="submit-bn hiddenStuff">
+                <div class="col-md-12">
+                    <label>5. Submit your image</label><br>
+                    <button class="btn btn-success btn-save-object">Submit</button>
+                </div>
+            </div>
+            </div>
+            <br>
+
+        </form>
+
+    </div>
+
+
+    <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+<!--     <script type="text/javascript" src="/public/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.shapeshift.min.js"></script>
+    <script type="text/javascript" src="/public/js/vendor/jquery.touch-punch.min.js"></script> -->
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/upload.js"></script>
+
+</body>
+
+</html>

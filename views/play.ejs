@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+</head>
+
+<body class="main">
+    <div class="logo">
+    <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
+    </div>
+    <div class="container">
+        <h1><%= title %></h1>
+        <% for(var i=0; i < data.length; i++) {%>
+            <img src="<%= data[i].image %>"/>
+            <h3><%= data[i].name %><small style="color:white;"> - type: <%= data[i].type %></small></h3>
+            <% var x = 0; %>
+            <% for (var value in data[i].properties) {%>
+                <%= value %>: <%= data[i].properties[value] %><br>
+                <% x++; %>
+            <% } %>
+            <br><br>
+        <% } %>
+  </div>
+
+
+    <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.shapeshift.min.js"></script>
+    <script type="text/javascript" src="/public/js/vendor/jquery.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/public/js/color.js"></script>
+    <script type="text/javascript" src="/public/js/script.js"></script>
+    <script type="text/javascript" src="/public/js/upload.js"></script>
+
+</body>
+
+</html>
