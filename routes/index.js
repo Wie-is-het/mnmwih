@@ -108,7 +108,7 @@ var saveObject = function(req,res){
                     });
 
                 }else{
-                    // console.log('Not all properties were valid')
+                    console.log('Not all properties were valid')
                     res.status(403).send('Please don\'t try to hack this game, we worked very hard on this, and it\'s people like you who ruin all the fun');
                 }
 
@@ -160,9 +160,11 @@ function validatePropertiesLegal(POST, locals) {
         localAttr.push(name.toLowerCase());
     };
 
+    console.log(localAttr, POST.properties);
+
     for(var obj in POST.properties){
 
-        // console.log(obj)
+        console.log(obj)
         if(localAttr.indexOf(obj.toLowerCase()) != -1){
 
             // console.log("true")
@@ -173,7 +175,7 @@ function validatePropertiesLegal(POST, locals) {
         }
     }
 
-    // console.log('illegal',illegalNotFound)
+    console.log('illegal',illegalNotFound)
     return illegalNotFound;
 
 }

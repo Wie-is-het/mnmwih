@@ -5,6 +5,7 @@ var util = require(__dirname + '/../libs/util.js'),
 module.exports = function (express, app) {
 
     app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+    //handlebars help: https://github.com/ericf/express3-handlebars/
     // app.enable('view cache');
 
     // Common configuration
