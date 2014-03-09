@@ -1,24 +1,4 @@
 /*
-For the dramatic resizing of imgur images
-*/
-
-function imgurThumb(imgurl, size){
-/*
-size types:
-s   Small Square    90x90   No
-b   Big Square  160x160 No
-t   Small Thumbnail 160x160 Yes
-m   Medium Thumbnail    320x320 Yes
-l   Large Thumbnail 640x640 Yes
-h   Huge Thumbnail  1024x1024   Yes
-*/
-
-    var ext = imgurl.split('.').pop();
-    var thumb = imgurl.substr(0, imgurl.lastIndexOf(".")) + size + "." + ext;
-    return thumb;
-}
-
-/*
  *
  * For the uploading of images to Imgur
  *

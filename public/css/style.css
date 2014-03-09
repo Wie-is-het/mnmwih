@@ -12,7 +12,8 @@ body.main .nav>li>a{padding:50px;font-size:3rem;font-weight:800;width:50%;margin
 .hiddenStuff{visibility:hidden}
 .main #wrapper{background:none}
 .main{position:absolute;top:0;width:100%}
-.play .container{margin-left:5%;width:90%;background:#fff;padding:20px;text-align:left}
+.play .container{margin-left:0;width:100%;background:#fff;padding:20px;text-align:left}
 #wrapper{border-radius:5px;width:80%;margin-top:5%;margin-left:10%;padding:50px;background:#fff}
 .audio{position:fixed;top:0;right:0;padding:10px;padding-right:30px;font-weight:800;font-size:13pt;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif}.audio a{color:#fff;text-decoration:none}
 img{max-width:100%%}
+.object-item{height:230px}

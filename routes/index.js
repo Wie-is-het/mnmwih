@@ -55,7 +55,7 @@ var play = function(req, res) {
                // console.log(docs);
                res.locals = {
                     title: 'Play',
-                    locals: locals,
+                    locals: JSON.stringify(locals),
                     data: docs,
                 };
                 return res.render(
