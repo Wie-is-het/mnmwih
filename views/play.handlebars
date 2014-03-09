@@ -21,6 +21,26 @@
             {{/each}}
             <br>
         {{/data}}
+
+        <span style="color:white">
+        <h3>All the possible stuffs</h3>
+        {{! Possible properties}}
+        {{#locals.properties}}
+            {{#people}}
+            <h4>{{name}}</h4>
+            {{#possibilities}}
+            {{.}}-
+            {{/possibilities}}
+            {{/people}}
+
+            {{#object}}
+            <h4>{{name}}</h4>
+            {{#possibilities}}
+            {{.}}-
+            {{/possibilities}}
+            {{/object}}
+        {{/locals.properties}}
+        </span>
   </div>
 
 
