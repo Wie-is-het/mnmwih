@@ -1,11 +1,17 @@
-html{height:100%}
-body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif;background:url('../img/site-bg.png');height:100%}
+html{height:100%;background:#033169;background:#033169 url('../img/site-bg.png');background-size:cover;background-repeat:no-repeat}
+body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif;background:url('../img/bg_stars.png');min-height:100%}
 body.main{text-align:center}body.main h1{font-size:4rem;margin-bottom:50px}
-body.main .nav>li>a{padding:50px;font-size:3rem;font-weight:800;width:50%;margin-left:25%;color:#fff}body.main .nav>li>a:hover{color:#39b9e9;background:#fff}
+body.main .nav>li>a{padding:50px;font-size:3rem;font-weight:800;width:50%;margin-left:25%;color:#fff;background:rgba(3,49,105,0.55)}body.main .nav>li>a:hover{color:#fff;background:#d60571}
+.wrap{width:100%;min-height:100%;background-repeat:repeat}
 .attribute-options{display:none}
-.nav>li>a{color:#fff}.nav>li>a:hover{color:#39b9e9;background:#fff}
-.nav>li>a.active{color:#39b9e9;background:#a7f041}
+.nav>li>a{color:#fff;background:#39b9e9;margin-bottom:5px}.nav>li>a:hover{background:#d60571}
+.nav>li>a.active{color:#fff;background:#df1a1b}
 .logo{position:absolute;top:20px;left:20px}
 #preview img{max-width:200px;max-height:150px}
 .red-border{border:solid #f00 2px}
 .hiddenStuff{visibility:hidden}
+.main #wrapper{background:none}
+.main{position:absolute;top:0;width:100%}
+.play .container{margin-left:5%;width:90%;background:#fff;padding:20px;text-align:left}
+#wrapper{border-radius:5px;width:80%;margin-top:5%;margin-left:10%;padding:50px;background:#fff}
+.audio{position:fixed;top:0;right:0;padding:10px;padding-right:30px;font-weight:800;font-size:13pt;font-family:tahoma,verdana,geneva,lucida,'lucida grande',arial,helvetica,sans-serif}.audio a{color:#fff;text-decoration:none}

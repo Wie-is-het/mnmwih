@@ -5,24 +5,29 @@
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
 </head>
 
-<body class="main">
+<body class="main play">
+<div class="wrap">
+<div id="wrapper">
     <div class="logo">
     <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
     </div>
     <div class="container">
         <h1>{{title}}</h1>
+        <div class="">
         {{#data}}
             <img src="{{image}}"/>
-            <h3>{{name}}<small style="color:white;"> - type: {{type}}</small></h3>
+            <h3>{{name}}<small> - type: {{type}}</small></h3>
             {{#each properties}}
                 {{@key}} : {{this}}<br>
             {{/each}}
             <br>
         {{/data}}
+        </div>
 
-        <span style="color:white">
+        <span>
         <h3>All the possible stuffs</h3>
         {{! Possible properties}}
         {{#locals.properties}}
@@ -41,7 +46,34 @@
             {{/object}}
         {{/locals.properties}}
         </span>
+    </div>
   </div>
+</div>
+<div class="audio">
+<!-- http://mp3.streampower.be/mnm-high.mp3 -->
+<audio id="mnmRadio">
+  <source src="http://mp3.streampower.be/mnm-low.mp3" type="audio/mpeg">
+</audio>
+<a href="#" id="audioControl">Listen Live</a>
+<script>
+var yourAudio = document.getElementById('mnmRadio'),
+    ctrl = document.getElementById('audioControl');
+
+ctrl.onclick = function () {
+
+    // Update the Button
+    var pause = ctrl.innerHTML === 'll';
+    ctrl.innerHTML = pause ? '&#9654;' : 'll';
+
+    // Update the Audio
+    var method = pause ? 'pause' : 'play';
+    yourAudio[method]();
+
+    // Prevent Default Action
+    return false;
+};
+</script>
+</div>
 
 
     <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>

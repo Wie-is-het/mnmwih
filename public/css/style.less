@@ -2,14 +2,22 @@
  @color: #00B7FF;
 @lightblue: #39B9E9;
 @lightgreen: #A7F041;
+@pink: #D60571;
+@red: #DF1A1B;
+@white: #FFFFFF;
+@darkbluetrans: rgba(3, 49, 105, 0.55);
 
  html {
     height: 100%;
+    background: #033169;
+    background: #033169 url('../img/site-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 body {
     font: @size"Lucida Grande", Helvetica, Arial, sans-serif;
-    background: url('../img/site-bg.png');
-    height: 100%;
+    background: url('../img/bg_stars.png');
+    min-height: 100%;
 }
 body.main {
     text-align: center;
@@ -23,12 +31,20 @@ body.main {
         font-weight: 800;
         width: 50%;
         margin-left: 25%;
-        color: #FFF;
+        color: @white;
+        background: @darkbluetrans;
         &:hover {
-            color: @lightblue;
-            background: white;
+            color: @white;
+            background: @pink;
         }
     }
+}
+
+.wrap{
+
+    width:100%;
+    min-height: 100%;
+    background-repeat: repeat;
 }
 
 .attribute-options{
@@ -37,14 +53,16 @@ body.main {
 
 .nav>li>a {
     color: #FFF;
+    background: @lightblue;
+    margin-bottom: 5px;
     &:hover {
-            color: @lightblue;
-            background: white;
+            // color: @lightblue;
+            background: @pink;
         }
 }
 .nav>li>a.active{
-    color: @lightblue;
-    background: @lightgreen;
+    color: @white;
+    background: @red;
 }
 
 .logo {
@@ -63,4 +81,48 @@ body.main {
 
 .hiddenStuff{
     visibility: hidden;
+}
+
+.container{
+}
+.main #wrapper{
+    background: none;
+}
+.main{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.play .container{
+    margin-left: 5%;
+    width: 90%;
+    background: @white;
+    padding: 20px;
+    text-align: left;
+}
+
+#wrapper{
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+    padding: 50px;
+    background: white;
+}
+
+.audio{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    padding-right: 30px;
+    font-weight: 800;
+    font-size: 13pt;
+    font-family: tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+    a{
+        color: @white;
+        text-decoration: none;
+
+    }
 }
