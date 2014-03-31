@@ -23,7 +23,8 @@ var locals = {title: 'Upload a new Photo',
               object: [
                 {"name": "Material", "possibilities": ["Wood", "Plastic","Stone","Digital","Paper"]},
                 {"name": "Breakable", "possibilities": ["yes", "no"]},
-                {"name": "Color", "possibilities": ["Red", "Yellow", "Green", "Blue","White","Black"]}
+                {"name": "Color", "possibilities": ["Red", "Yellow", "Green", "Blue","White","Black"]},
+                {"name": "animal type", "possibilities": ["Dog","Cat","Fish","Rabbit"]}
               ]
             }}
 
