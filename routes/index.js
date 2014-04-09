@@ -3,8 +3,6 @@ var path = require('path'),
     Nedb = require('nedb'),
     fs = require('fs');
 
-var admin = require('../controllers/admin-controller')
-
 // DB logic & shizzle
 var main = require('../models/db-main');
 // models = Nedb.model('main')
@@ -41,8 +39,6 @@ module.exports = function(app) {
     app.post('/upload', saveObject)
 
     app.get('/play', play)
-
-    app.get('/admin', admin.dashboard)
 };
 
 

@@ -11,65 +11,94 @@
 <body class="main play">
 <div class="wrap">
 <div id="wrapper">
+    <div class="logo">
+    <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
+    </div>
     <div class="container">
-        <br><br>
+        <h1>{{title}}</h1>
         <div class="row">
-            <div class="logo col-md-2">
-                <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
-            </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <div class="play-nav row">
-                    <div class="col-md-3 nav-item">MNM Home</div>
-                    <div class="col-md-3 nav-item">Upload</div>
-                    <div class="col-md-3 nav-item">News</div>
-                    <div class="col-md-3 nav-item" id="audioControl">Listen Live</div>
+            <div class="col-md-9">
+                <div class="row">
+                {{#data}}
+                <div class="col-md-3 object-item">
+                    <img data-src="{{image}}" class="imgurImg" />
+                    <h4>{{name}}</h4>
+                    <!-- {{#each properties}}
+                        {{@key}} : {{this}}<br>
+                    {{/each}} -->
+                    <br>
                 </div>
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-        <br><br>
-        <div class="lb photos">
-            <h1>Wie is het?</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="row">
-                    {{#data}}
-                    <div class="col-sm-2 object-item">
-                        <img data-src="{{image}}" class="imgurImg" />
-                        <h4>{{name}}</h4>
-                        <br>
+                {{/data}}
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" placeholder="geef hier uw antwoord in">
                     </div>
-                    {{/data}}
+                    <div class="col-md-2">
+                        <button class="btn btn-success">Controleer</button>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row answer-field">
-            <div class="col-md-3">
-                <h2>Geef Antwoord:</h2>
-            </div>
-            <div class="col-md-3">
+                <br>
+                <div class="row questions">
+                <h4>Questions</h4>
+                <script id="place-json" type="application/json">
+                  {{locals}}
+                </script>
+                    <!-- <div class="col-md-12"> -->
+                    <!-- {{#locals.properties}}
 
-                <input type="text" class="form-control" placeholder="geef hier uw antwoord in">
-                <div class="mnm-flag-holder"></div>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-success btn-block">Antwoord</button>
-                <div class="mnm-flag-holder"></div>
-            </div>
-            <div class="col-md-4 current-stats">
-                • Nog 5 pogingen over<br>
-                • Nog 118 vragen over
-            </div>
-        </div>
 
-        </div>
-            <div class="row questions">
-                    <h4>Questions</h4>
-                    <script id="place-json" type="application/json">
-                      {{locals}}
-                    </script>
+                        {{#people}}
+                        <div class="col-md-3">
+                            {{name}}<br>
+                        {{#possibilities}}
+                        <a href="#">{{.}} ?</a><br>
+                        {{/possibilities}}
+                        </div>
+                        {{/people}}
+
+                        {{#object}}
+                        <div class="col-md-3">
+                            {{name}}<br>
+                        {{#possibilities}}
+                        <a href="#">{{.}} ?</a><br>
+                        {{/possibilities}}
+                        </div>
+                        {{/object}}
+                    {{/locals.properties}} -->
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="fb-login">
+                <h3>Welcome</h3>
+                <button class="btn btn-primary disabled">
+                Log in with Facebook
+                </button>
+                </div>
+                <div class="highscores" style="width:80%;">
+                <h3>Highscores</h3>
+                <div>1. speler 1<span style="float:right">165</span></div>
+                <div>2. speler 2<span style="float:right">165</span></div>
+                <div>3. speler 3<span style="float:right">165</span></div>
+                <div>4. speler 4<span style="float:right">165</span></div>
+                <div>5. speler 5<span style="float:right">165</span></div>
+                <div>6. speler 6<span style="float:right">165</span></div>
+                <div>7. speler 7<span style="float:right">165</span></div>
+                <div>8. speler 8<span style="float:right">165</span></div>
+                <div>9. speler 9<span style="float:right">165</span></div>
+                <div>10. speler 10<span style="float:right">165</span></div>
+                <div>11. speler 11<span style="float:right">165</span></div>
+                <div>12. speler 12<span style="float:right">165</span></div>
+                <div>13. speler 13<span style="float:right">165</span></div>
+                <div>14. speler 14<span style="float:right">165</span></div>
+                <div>15. speler 15<span style="float:right">165</span></div>
+                <div>16. speler 16<span style="float:right">165</span></div>
+                <div>17. speler 17<span style="float:right">165</span></div>
+                <div>18. speler 18<span style="float:right">165</span></div>
+                <div>19. speler 19<span style="float:right">165</span></div>
+                <div>20. speler 20<span style="float:right">165</span></div>
+                </div>
             </div>
         </div>
 
@@ -108,8 +137,8 @@ var yourAudio = document.getElementById('mnmRadio'),
 ctrl.onclick = function () {
 
     // Update the Button
-    var pause = ctrl.innerHTML === 'Mute';
-    ctrl.innerHTML = pause ? 'Listen Live' : 'Mute';
+    var pause = ctrl.innerHTML === 'll';
+    ctrl.innerHTML = pause ? '&#9654;' : 'll';
 
     // Update the Audio
     var method = pause ? 'pause' : 'play';
