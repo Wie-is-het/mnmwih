@@ -1,6 +1,39 @@
+@font-face {
+  font-weight:  400;
+
+  font-style:   normal;
+  font-family: 'Lobster';
+  src: url('../fonts/Lobster.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/Lobster.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/Lobster.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/Lobster.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/Lobster.svg#5fd20774a61b9b12eebda262207233e0') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-weight:  400;
+
+  font-style:   normal;
+  font-family: 'PAG Revolucion';
+  src: url('../fonts/PAG-Revolucion.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/PAG-Revolucion.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/PAG-Revolucion.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/PAG-Revolucion.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/PAG-Revolucion.svg#89157f2fcb61950ca5c56c544b3a32c4') format('svg'); /* Legacy iOS */
+}
+.mnm-flag(){
+background-image: -o-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
+background-image: -moz-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
+background-image: -webkit-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
+background-image: -ms-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
+background-image: linear-gradient(to right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
+}
+@mnm-db: #09306C;
+@mnm-red: #D9001B;
+@mnm-lb: #138BD3;
 @size: 14px;
- @color: #00B7FF;
-@lightblue: #39B9E9;
+@color: #00B7FF;
+@lightblue: #E1E9EE;
 @lightgreen: #A7F041;
 @pink: #D60571;
 @red: #DF1A1B;
@@ -9,41 +42,70 @@
 
  html {
     height: 100%;
-    background: #033169;
-    background: #033169 url('../img/site-bg.png');
+    // background: #033169;
+    // background: #033169 url('../img/site-bg.png');
+    background: white;
     background-size: cover;
     background-repeat: no-repeat;
 }
+h1{
+    font-family: 'Lobster';
+}
+h2, h3, h4, h5, h6{
+    font-family: 'PAG Revolucion', 'Gil Sans';
+}
 body {
-    font: @size"Lucida Grande", Helvetica, Arial, sans-serif;
-    background: url('../img/bg_stars.png');
     min-height: 100%;
+    background: url('../img/bg_stars.png');
+    font: @size"Lucida Grande", Helvetica, Arial, sans-serif;
 }
 body.main {
     text-align: center;
     h1 {
-        font-size: 4rem;
         margin-bottom: 50px;
+        font-size: 4rem;
     }
     .nav>li>a {
-        padding: 50px;
-        font-size: 3rem;
-        font-weight: 800;
-        width: 50%;
         margin-left: 25%;
-        color: @white;
+        padding: 50px;
+        width: 50%;
         background: @darkbluetrans;
+        color: @white;
+        font-weight: 800;
+        font-size: 3rem;
         &:hover {
-            color: @white;
             background: @pink;
+            color: @white;
         }
     }
 }
-
+.play-nav.row{
+    border-radius: 5px !important;
+    overflow: hidden;
+    font-family: 'PAG Revolucion';
+    font-size: 2.2rem;
+    .nav-item{
+        padding: 10px;
+        padding-top: 15px;
+        background: @mnm-red;
+        text-align: center;
+        &:hover{
+            color: @white;
+            cursor: pointer;
+        }
+    }
+    &:after{
+        .mnm-flag();
+        content: '';
+        width: 100%;
+        position: relative;
+        height: 7px;
+    }
+}
 .wrap{
+    min-height: 100%;
 
     width:100%;
-    min-height: 100%;
     background-repeat: repeat;
 }
 
@@ -52,23 +114,75 @@ body.main {
 }
 
 .nav>li>a {
-    color: #FFF;
-    background: @lightblue;
     margin-bottom: 5px;
+    background: @lightblue;
+    color: #FFF;
     &:hover {
             // color: @lightblue;
             background: @pink;
         }
 }
 .nav>li>a.active{
-    color: @white;
     background: @red;
+    color: @white;
+}
+
+.answer-field{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 3rem;
+    font-family: 'PAG Revolucion';
+    input{
+        position: relative;
+        z-index: 10;
+        margin-top: 20px;
+        padding-top: 10px;
+        border: none;
+        border-radius: 2px;
+        background: @lightblue;
+        font-size: 2rem;
+        &:focus{
+            border: @lightblue;
+            box-shadow: none;
+        }
+    }
+    .btn{
+        position: relative;
+        z-index: 10;
+        margin-top: 20px;
+        padding: 0px;
+        padding-top: 5px;
+        border-color: @mnm-lb;
+        border-radius: 2px;
+        background: @mnm-lb;
+        font-size: 2rem;
+    }
+    .current-stats{
+        font-family: 'Helvetica', Arial, sans-serif;
+        font-size: 1.6rem;
+        padding-top: 20px;
+    }
+}
+.mnm-flag-holder{
+    .mnm-flag();
+    position: relative;
+    z-index: 0;
+    display: block;
+    visibility: visible;
+    margin-top: -5px;
+    width: 100%;
+    height: 10px;
+    border-radius: 4px;
+    content: '';
 }
 
 .logo {
-    position: absolute;
-    top:20px;
-    left: 20px;
+    max-width: 100%;
+    img{
+        max-width: 100%;
+        max-height: 50%;
+        margin-top: -30px;
+    }
 }
 #preview img {
     max-width: 200px;
@@ -82,9 +196,6 @@ body.main {
 .hiddenStuff{
     visibility: hidden;
 }
-
-.container{
-}
 .main #wrapper{
     background: none;
 }
@@ -96,18 +207,22 @@ body.main {
 
 .play .container{
     margin-left: 0%;
-    width: 100%;
-    background: @white;
     padding: 20px;
+    width: 100%;
     text-align: left;
 }
 
+.lb{
+    background-color: @lightblue;
+}
+
+.photos{
+    padding: 10px;
+}
+
 #wrapper{
-    border-radius: 5px;
-    width: 80%;
-    margin-top: 5%;
     margin-left: 10%;
-    padding: 50px;
+    border-radius: 5px;
     background: white;
 }
 
@@ -128,7 +243,7 @@ body.main {
 }
 
 img{
-    max-width: 100%%;
+    max-width: 100%;
 }
 
 .object-item{

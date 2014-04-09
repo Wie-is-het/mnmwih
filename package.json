@@ -9,22 +9,22 @@
     "node": ">=0.10.2"
   },
   "dependencies": {
-    "optimist": "*.*",
-    "express": "3.4.*",
     "connect": "2.*",
-    "less-middleware": "*",
-    "hogan-express": "~0.5.2",
-    "formidable": "~1.0.14",
-    "mongoose": "~3.8.5",
-    "supergoose": "~0.2.2",
-    "passport": "~0.2.0",
-    "passport-google-oauth": "~0.1.5",
-    "nedb": "~0.10.4",
-    "mongodb": "~1.3.23",
-    "ejs": "~0.8.5",
     "consolidate": "~0.10.0",
+    "ejs": "~0.8.5",
+    "express": "3.4.*",
     "express3-handlebars": "~0.5.0",
-    "handlebars": "~2.0.0-alpha.2"
+    "formidable": "~1.0.14",
+    "handlebars": "~2.0.0-alpha.2",
+    "hogan-express": "~0.5.2",
+    "less-middleware": "*",
+    "mongodb": "~1.3.23",
+    "mongoose": "~3.8.5",
+    "nedb": "~0.10.4",
+    "optimist": "*.*",
+    "passport": "^0.2.0",
+    "passport-google-oauth": "~0.1.5",
+    "supergoose": "~0.2.2"
   },
   "main": "app.js"
 }
