@@ -32,7 +32,7 @@ var locals = {title: 'Upload a new Photo',
 
 module.exports = function(app) {
 
-    app.get('/', index)
+    app.get('/', play)
 
     // app.get('/app/:id', view)
 
