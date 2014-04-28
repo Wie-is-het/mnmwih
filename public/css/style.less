@@ -28,14 +28,28 @@ background-image: -webkit-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-r
 background-image: -ms-linear-gradient(right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
 background-image: linear-gradient(to right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33%, @mnm-red 66%, @mnm-lb 66%, @mnm-lb 100%) !important;
 }
+.bgtransition()
+{
+    -webkit-transition: background 0.3s ease-out, border-color 0.3s ease-out;
+            transition: background 0.3s ease-out, border-color 0.3s ease-out;
+}
+.colortransition()
+{
+    -webkit-transition: color 0.3s ease-out;
+            transition: color 0.3s ease-out;
+}
+
 @mnm-db: #09306C;
 @mnm-red: #D9001B;
 @mnm-lb: #138BD3;
 @size: 14px;
 @color: #00B7FF;
-@lightblue: #E1E9EE;
+@darkblue : #00214a;
+//@lightblue: #E1E9EE;
+@lightblue : rgba(225, 233, 238, 1);
 @lightgreen: #A7F041;
 @pink: #D60571;
+//@pink: rgba(223, 47, 136, 0.8);
 @red: #DF1A1B;
 @white: #FFFFFF;
 @darkbluetrans: rgba(3, 49, 105, 0.55);
@@ -73,9 +87,14 @@ body.main {
         color: @white;
         font-weight: 800;
         font-size: 3rem;
+
+        .bgtransition();
+
         &:hover {
             background: @pink;
             color: @white;
+
+            .bgtransition();
         }
     }
 }
@@ -87,11 +106,16 @@ body.main {
     .nav-item{
         padding: 10px;
         padding-top: 15px;
-        background: @mnm-red;
+        background: @pink;
         text-align: center;
+
+        .colortransition();
+
         &:hover{
             color: @white;
             cursor: pointer;
+
+            .colortransition();
         }
     }
     &:after{
@@ -152,10 +176,17 @@ body.main {
         margin-top: 20px;
         padding: 0px;
         padding-top: 5px;
-        border-color: @mnm-lb;
+        border-color: @pink;
         border-radius: 2px;
-        background: @mnm-lb;
+        background: @pink;
         font-size: 2rem;
+
+        .bgtransition();
+
+        &:hover {
+            background: @darkblue;
+            border-color: @darkblue;
+        }
     }
     .current-stats{
         font-family: 'Helvetica', Arial, sans-serif;
@@ -213,6 +244,8 @@ body.main {
 }
 
 .lb{
+    border-radius: 5px !important;
+    background: url('../img/bg_stars.png');
     background-color: @lightblue;
 }
 
