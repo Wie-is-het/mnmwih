@@ -13,28 +13,28 @@
 <div id="wrapper">
     <div class="container">
         {{!-- <div class="row">
-            <div class="logo col-md-2">
+            <div class="logo col-xs-2">
                 <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
             </div>
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-6">
                 <div class="play-nav row">
-                    <div class="col-md-3 nav-item">MNM Home</div>
-                    <div class="col-md-3 nav-item">Upload</div>
-                    <div class="col-md-3 nav-item">News</div>
-                    <div class="col-md-3 nav-item" id="audioControl">Listen Live</div>
+                    <div class="col-xs-3 nav-item">MNM Home</div>
+                    <div class="col-xs-3 nav-item">Upload</div>
+                    <div class="col-xs-3 nav-item">News</div>
+                    <div class="col-xs-3 nav-item" id="audioControl">Listen Live</div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            <div class="col-xs-1"></div>
         </div>
         --}}
         <div class="lb photos">
             <h1>Wie is het?</h1>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <div class="row">
                     {{#data}}
-                    <div class="col-sm-2 object-item">
+                    <div class="col-xs-2 object-item">
                         <img data-src="{{image}}" class="imgurImg" />
                         <h4>{{name}}</h4>
                         <br>
@@ -45,19 +45,19 @@
             </div>
         </div>
         <div class="row answer-field">
-            <div class="col-md-3">
+            <div class="col-xs-3">
                 <h2>Geef Antwoord:</h2>
             </div>
-            <div class="col-md-3">
+            <div class="col-xs-3">
 
                 <input type="text" class="form-control" placeholder="geef hier uw antwoord in">
                 <div class="mnm-flag-holder"></div>
             </div>
-            <div class="col-md-2">
+            <div class="col-xs-2">
                 <button class="btn btn-success btn-block">Antwoord</button>
                 <div class="mnm-flag-holder"></div>
             </div>
-            <div class="col-md-4 current-stats">
+            <div class="col-xs-4 current-stats">
                 • Nog 5 pogingen over<br>
                 • Nog 118 vragen over
             </div>
@@ -99,10 +99,10 @@
 </div>
 <div class="audio">
 <!-- http://mp3.streampower.be/mnm-high.mp3 -->
-<audio id="mnmRadio">
+{{!-- <audio id="mnmRadio">
   <source src="http://mp3.streampower.be/mnm-low.mp3" type="audio/mpeg">
 </audio>
-<a href="#" id="audioControl">Listen Live</a>
+<a href="#" id="audioControl">Listen Live</a> --}}
 <script>
 var yourAudio = document.getElementById('mnmRadio'),
     ctrl = document.getElementById('audioControl');
