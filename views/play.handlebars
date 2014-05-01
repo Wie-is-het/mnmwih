@@ -107,19 +107,19 @@
 var yourAudio = document.getElementById('mnmRadio'),
     ctrl = document.getElementById('audioControl');
 
-ctrl.onclick = function () {
+// ctrl.onclick = function () {
 
-    // Update the Button
-    var pause = ctrl.innerHTML === 'Mute';
-    ctrl.innerHTML = pause ? 'Listen Live' : 'Mute';
+//     // Update the Button
+//     var pause = ctrl.innerHTML === 'Mute';
+//     ctrl.innerHTML = pause ? 'Listen Live' : 'Mute';
 
-    // Update the Audio
-    var method = pause ? 'pause' : 'play';
-    yourAudio[method]();
+//     // Update the Audio
+//     var method = pause ? 'pause' : 'play';
+//     yourAudio[method]();
 
-    // Prevent Default Action
-    return false;
-};
+//     // Prevent Default Action
+//     return false;
+// };
 </script>
 </div>
 

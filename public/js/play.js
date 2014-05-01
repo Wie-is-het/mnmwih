@@ -8,11 +8,11 @@ $(function() {
     var jsonHTML = $('#place-json').text();
     var locals = jsonHTML.replace(/&quot;/g, '"');
     locals = JSON.parse(locals);
-    console.log(locals.properties.people);
+    //console.log(locals.properties.people);
 
     for (var j = 0; j < locals.properties.people.length; j++) {
         localProps = locals.properties.people[j];
-        console.log(localProps);
+        //console.log(localProps);
 
         switch (localProps.name.toLowerCase()) {
             case 'sex':
@@ -61,18 +61,36 @@ $(function() {
     var qArr = [];
 
     $('.quest').each(function() {
-        console.log($(this).html());
+        //console.log($(this).html());
         qArr.push($(this).html());
     });
 
     $('.questions .quest').empty();
 
-    console.log(qArr);
+    //console.log(qArr);
 
     for (var i = 0; i < qArr.length; i++) {
         $('select.q').append('<option>' + qArr[i] + '</option>');
     };
 
+
+    //Scaling .imgurImg 
+   scaleImage('.object-item');
+
+
+    function scaleImage(attribute){
+        $(attribute).hover(function() {
+            $(this).css("cursor", "pointer");
+            $(this).animate({
+                width: "20%"
+            }, 'slow');
+
+        }, function() {
+            $(this).animate({
+                width: "16.5%"
+            }, 'slow');
+        })
+    }
 })
 
 
