@@ -56,6 +56,7 @@ background-image: linear-gradient(to right, @mnm-db 0%, @mnm-db 33%, @mnm-red 33
 
  html {
     height: 100%;
+    width: 850px;
     // background: #033169;
     // background: #033169 url('../img/site-bg.png');
     background: white;
@@ -70,6 +71,8 @@ h2, h3, h4, h5, h6{
 }
 body {
     min-height: 100%;
+    width: 850px;
+    position: absolute;
     background: url('../img/bg_stars.png');
     font: @size"Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -126,6 +129,7 @@ body.main {
         height: 7px;
     }
 }
+
 .wrap{
     min-height: 100%;
 
@@ -133,6 +137,10 @@ body.main {
     background-repeat: repeat;
 }
 
+.questions{
+    width: 850px;
+    margin-left: 0 !important;
+}
 .attribute-options{
     display: none;
 }
@@ -229,6 +237,8 @@ body.main {
 }
 .main #wrapper{
     background: none;
+    margin: 0;
+    padding: 0;
 }
 .main{
     position: absolute;
@@ -238,8 +248,8 @@ body.main {
 
 .play .container{
     margin-left: 0%;
-    padding: 20px;
-    width: 100%;
+    padding: 0px;
+    width: 860px;
     text-align: left;
 }
 
@@ -263,11 +273,10 @@ body.main {
 }
 
 .photos{
-    padding: 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 #wrapper{
-    margin-left: 10%;
     border-radius: 5px;
     background: white;
 }
@@ -295,3 +304,5 @@ img{
 .object-item{
     height: 230px;
 }
+
+
