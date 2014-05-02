@@ -30,12 +30,21 @@
         --}}
         <div class="row">
             <div class="lb photos col-md-8">
-                <h1>Wie is het?</h1>
                 <div class="row">
-                <div class="col-xs-12">
+                    <div class="col-xs-8">
+                        <h1>Wie is het?</h1>
+                    </div>
+                    <div class="upload-field col-xs-4">
+                        <button class="btn btn-success btn-block">Upload je eigen foto</button>
+                        <div class="mnm-flag-holder"></div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-xs-12">
                         <div class="row">
                         {{#data}}
-                    <div class="col-xs-2 object-item">
+                        <div class="object-item">
                             <img data-src="{{image}}" class="imgurImg" />
                             <h4>{{name}}</h4>
                             <br>
@@ -45,22 +54,38 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1">
-            </div>
-            <div class="db hiscores col-md-3">
+            <div class="col-md-1"></div>
+            <div class="db questions col-md-3">
                 <h2>Questions</h2>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="row questions">
-                            <script id="place-json" type="application/json">
-                              {{locals}}
-                            </script>
-                            <select class="q form-control" style="margin:0 !important;">
+                <ul>
+                    <li><h5>Is it male?</h5></li>
+                    <li><h5>Is it female?</h5></li>
+                    <li><h5>Does it wear glasses?</h5></li>
+                    <li><h5>Does he have a goatee?</h5></li>
+                    <li><h5>Does he have a mustache</h5></li>
+                    <li><h5>Does he have a beard?</h5></li>
+                    <li><h5>Does it have blonde hair?</h5></li>
+                    <li><h5>Does it have brown hair?</h5></li>
+                    <li><h5>Does it have black hair?</h5></li>
+                    <li><h5>Does it have ginger hair?</h5></li>
+                    <li><h5>Does it have long hair?</h5></li>
+                    <li><h5>Does it have short hair?</h5></li>
+                    <li><h5>Does it have bald hair?</h5></li>
+                    <li><h5>Is it bald?</h5></li>
+                    <li><h5>Does it accesorize with nothing?</h5></li>
+                    <li><h5>Does it accesorize with earrings?</h5></li>
+                    <li><h5>Does it accesorize with glasses?</h5></li>
+                    <li><h5>Does it accesorize with a hat?</h5></li>
+                    <li><h5>Does it accesorize with earrings and a hat?</h5></li>
+                    <li><h5>Does it accesorize with glasses and a hat?</h5></li>
+                    <li><h5>Does it accesorize with earrings and glasses?</h5></li>
+                </ul>
+                <!--<script id="place-json" type="application/json">
+                  {{locals}}
+                </script>
+                <select class="q form-control" style="margin:0 !important;">
 
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                </select>-->
                 
             </div>
 
@@ -85,7 +110,7 @@
             </div>
         </div>
 
-        </div>
+        <!--</div>
             <div class="row questions">
                     <h4>Questions</h4>
                     <script id="place-json" type="application/json">
@@ -95,7 +120,7 @@
 
                     </select>
             </div>
-        </div>
+        </div>-->
 
         <!-- <span>
         <h3>All the possible stuffs</h3>

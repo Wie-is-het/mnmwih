@@ -73,9 +73,8 @@ $(function() {
         $('select.q').append('<option>' + qArr[i] + '</option>');
     };
 
-
     //Scaling .imgurImg 
-   scaleImage('.object-item');
+   //scaleImage('.object-item');
 
 
     function scaleImage(attribute){
@@ -91,6 +90,10 @@ $(function() {
             }, 'slow');
         })
     }
+    //for (var x = Things.length - 1; x >= 0; x--) {
+    //    $(".photos .object-item:nth-child(" + x + ")").addClass('col-md-offset-1');
+    //};
+    //$(".photos .object-item:nth-child(5n+1)").addClass('col-md-offset-1');
 })
 
 
