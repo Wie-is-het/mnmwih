@@ -4,6 +4,7 @@
 <head>
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/lightbox.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
 </head>
@@ -27,87 +28,72 @@
             </div>
             <div class="col-xs-1"></div>
         </div>
-        --}}
+ --}}
         <div class="row">
-            <div class="lb photos col-md-8">
+            <div class="lb photos col-xs-8">
                 <div class="row">
-                    <div class="col-xs-8">
+                    <div class="col-xs-6">
                         <h1>Wie is het?</h1>
                     </div>
-                    <div class="upload-field col-xs-4">
-                        <button class="btn btn-success btn-block">Upload je eigen foto</button>
+                    <div class="upload-field col-xs-6">
+                        <a href="/upload" class="btn btn-success btn-block">Upload je eigen foto</a>
                         <div class="mnm-flag-holder"></div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="row">
-                        {{#data}}
-                        <div class="object-item">
-                            <img data-src="{{image}}" class="imgurImg" />
-                            <h4>{{name}}</h4>
-                            <br>
-                        </div>
+                            {{#data}}
+                            <div class="object-item">
+                                <a href="{{image}}" data-lightbox="{{image}}" data-title="{{name}}"><img data-src="{{image}}" class="imgurImg" />
+                                <h4>{{name}}</h4></a>
+                                <br>
+                            </div>
                         {{/data}}
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
-            <div class="db questions col-md-3">
-                <h2>Questions</h2>
-                <ul>
-                    <li>Is it male?</li>
-                    <li>Is it female?</li>
-                    <li>Does it wear glasses?</li>
-                    <li>Does he have a goatee?</li>
-                    <li>Does he have a mustache</li>
-                    <li>Does he have a beard?</li>
-                    <li>Does it have blonde hair?</li>
-                    <li>Does it have brown hair?</li>
-                    <li>Does it have black hair?</li>
-                    <li>Does it have ginger hair?</li>
-                    <li>Does it have long hair?</li>
-                    <li>Does it have short hair?</li>
-                    <li>Does it have bald hair?</li>
-                    <li>Is it bald?</li>
-                    <li>Does it accesorize with nothing?</li>
-                    <li>Does it accesorize with earrings?</li>
-                    <li>Does it accesorize with glasses?</li>
-                    <li>Does it accesorize with a hat?</li>
-                    <li>Does it accesorize with earrings and a hat?</li>
-                    <li>Does it accesorize with glasses and a hat?</li>
-                    <li>Does it accesorize with earrings and glasses?</li>
-                </ul>
-                <!--<script id="place-json" type="application/json">
+            <div class="col-xs-4 db questions">
+                • Questions loading..<br><br>If this takes longer than 10 seconds, please try restarting the game by <a href="/"><strong>clicking here</strong></a>, and make sure you have javascript enabled<br><br>
+            </div>
+            <div class="answer-field">
+            <div class="col-xs-4">
+                <h2>Geef Antwoord:</h2>
+            </div>
+            <div class="col-xs-4">
+
+                <input type="text" class="answer-input form-control almost-full-width" placeholder="geef hier uw antwoord in" list="names">
+                <datalist id="names">
+                    {{#data}}
+                    <option value="{{name}}">{{name}}</option>
+                    {{/data}}
+                </datalist>
+                <div class="mnm-flag-holder almost-full-width"></div>
+            </div>
+            <div class="col-xs-4">
+                <a class="btn btn-success btn-block btn-answer almost-full-width">Antwoord</a>
+                <div class="mnm-flag-holder almost-full-width"></div>
+            </div>
+            <div class="col-xs-4 current-stats">
+                • Nog <span class="attemps_left">5</span> pogingen over<br>
+                • Nog <span class="questions_left">118</span> vragen over
+            </div>
+        </div>
+
+                <script id="place-json" type="application/json">
                   {{locals}}
                 </script>
+                <script id="place-json2" type="application/json">
+                  {{result}}
+                </script>
+                <!--
                 <select class="q form-control" style="margin:0 !important;">
 
                 </select>-->
-                
-            </div>
 
-        </div>
 
-        <div class="row answer-field">
-            <div class="col-xs-3">
-                <h2>Geef Antwoord:</h2>
-            </div>
-            <div class="col-xs-3">
-
-                <input type="text" class="form-control" placeholder="geef hier uw antwoord in">
-                <div class="mnm-flag-holder"></div>
-            </div>
-            <div class="col-xs-2">
-                <button class="btn btn-success btn-block">Antwoord</button>
-                <div class="mnm-flag-holder"></div>
-            </div>
-            <div class="col-xs-4 current-stats">
-                • Nog 5 pogingen over<br>
-                • Nog 118 vragen over
-            </div>
         </div>
 
         <!--</div>
@@ -172,6 +158,7 @@ var yourAudio = document.getElementById('mnmRadio'),
 
 
     <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+    <script src="/public/js/lightbox.min.js"></script>
     <script src="/public/js/play.js"></script>
 
 </body>

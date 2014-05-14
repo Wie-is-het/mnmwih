@@ -5,11 +5,35 @@
     <title>{{title}}</title>
     <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <style>
+    body{
+        background-color: #09306C;
+        width: 100%;
+    }
+    a.categorie-link, a.property{
+        background: #138BD3 !important;
+        font-weight: 800;
+    }
+    a.active{
+        background: #D9001B !important;
+    }
+    #wrapper{
+        padding: 20px;
+    }
+    .btn-back{
+        margin: 15px;
+        font-weight: 800;
+        color: #138BD3;
+    }
+    h5{
+        font-size: 13pt;
+    }
+    </style>
 </head>
 
 <body>
 <div class="logo">
- <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
+ <a href="/" class="btn btn-default btn-back">Back</a>
  </div>
 <!-- <a class="btn btn-default" href="/" style="margin: 1%;">Back</a> -->
     <div class="container">
@@ -18,7 +42,7 @@
 
         <form role="form" id="saveForm" name="saveForm">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <label>1. Choose your image</label>
                     <input type="file" id="imgInput">
                     <br>
@@ -31,7 +55,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <label>2. Give your image a Name</label>
                     <br>
                     <input type="text" required class="form-control" style="max-width: 300px;" id="image-name">
@@ -39,57 +63,29 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12 categories">
-                    <label>3. Choose the categorie</label>
-                    <br>
-                    <ul class="nav nav-pills">
-                        {{#categories}}
-                        <li>
-                            <a href="#" class="categorie-link" data-categorie="{{.}}">{{.}}</a>
-                        </li>
-                        {{/categories}}
-                    </ul>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-md-12">
-                    <label>4. Choose an attribute from each group</label>
+                <div class="col-xs-12">
+                    <label>3. Choose your attributes</label>
                     <div class="attribute-options people-options">
 
-                    {{#properties.people}}
+                    {{#props}}
                     <div class="group">
                         <h5>{{name}}</h5>
                         <ul class="nav nav-pills nav-pill">
-                        {{#possibilities}}
+                        {{#each possibilities}}
                         <li>
                             <a href="#" class="property" data-group="{{../name}}" data-value="{{.}}">{{.}}</a>
                         </li>
-                        {{/possibilities}}
+                        {{/each}}
                         </ul>
                     </div>
-                    {{/properties.people}}
-                    </div>
-                    <div class="attribute-options object-options">
-                    {{#properties.object}}
-                    <div class="group">
-                        <h5>{{name}}</h5>
-                        <ul class="nav nav-pills">
-                        {{#possibilities}}
-                        <li>
-                            <a href="#" class="property" data-group="{{../name}}" data-value="{{.}}">{{.}}</a>
-                        </li>
-                        {{/possibilities}}
-                        </ul>
-                    </div>
-                    {{/properties.object}}
+                    {{/props}}
                     </div>
                 </div>
             </div>
             <br>
              <div class="row">
              <div class="submit-bn hiddenStuff">
-                <div class="col-md-12">
+                <div class="col-xs-12">
                     <label>5. Submit your image</label><br>
                     <button class="btn btn-success btn-save-object">Submit</button>
                 </div>

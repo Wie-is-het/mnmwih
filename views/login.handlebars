@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+    body {
+        width: 100%;
+        height:100%;
+        background: #EFEFEF;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    }
+    h1,h2,h3,h4{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-weight: 600;
+    }
+    .login-container {
+        width: 80%;
+        top: 25%;
+        margin-left: 10%;
+        margin-top: 100px;
+        border-radius: 4px;
+        background: #FFFFFF;
+        padding: 20px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+        box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    }
+    img.fi{
+        max-height: 1.5em;
+        color: white;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="top: 20px !important; position: fixed !important; width:90%; margin-left:5%;">
+    {{#message}}
+        <div class="alert alert-danger">{{message}}</div>
+    {{/message}}
+    </div>
+    <div class="container login-container">
+            <!-- <h3>Log in</h3> -->
+                <a href="/auth/google" type="submit" class="btn btn-lg btn-danger pull-left">
+                <img class="fi" src="/public/img/gplus.svg">
+                &nbsp;Sign in with Google</a>
+        <br>
+    </div>
+
+</body>
+
+</html>

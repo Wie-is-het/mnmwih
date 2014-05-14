@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/lightbox.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
+    <style>
+		.searchGroup{
+			position: absolute;
+			top: 3%;
+			right: 3%;
+		}
+    </style>
+</head>
+	<body>
+		<div class="container">
+			<h1>Photo admin</h1>
+			<form action="/admin/photos/search">
+				<div class="input-group col-xs-6 pull-right searchGroup">
+					<input type="text" name="search" id="search" class="form-control">
+						<div class="input-group-btn">
+							<input type="submit" value="Search" class="form-control">
+						</div>
+				</div>
+			</form>
+			<a href="/admin/photos">First page</a> | Page {{page}} | <a href="/admin/photos/{{pagePlusOne}}">next page &rarr;</a>
+ 			<div class="row">
+                {{#data}}
+                <div class="object-item col-sm-3">
+                   	<a href="{{image}}" data-lightbox="{{image}}" data-title="{{name}}"><img data-src="{{image}}" class="imgurImg" />
+                        <h4>{{name}} &nbsp;&nbsp;<small><a href="/removePhoto/{{_id}}">Delete</a></small></h4></a>
+                        <br>
+                </div>
+                {{/data}}
+             </div>
+	    </div>
+	<script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+	<script src="/public/js/lightbox.min.js"></script>
+
+	    <script>
+
+	    $(function(){
+	    	$('.imgurImg').each(function() {
+		        src = $(this).attr('data-src');
+		        thumb = imgurThumb(src, 'b');
+		        $(this).attr('src', thumb);
+		    })
+	    })
+
+	    function imgurThumb(imgurl, size) {
+	    /*
+		size types:
+		s   Small Square    90x90   No
+		b   Big Square  160x160 No
+		t   Small Thumbnail 160x160 Yes
+		m   Medium Thumbnail    320x320 Yes
+		l   Large Thumbnail 640x640 Yes
+		h   Huge Thumbnail  1024x1024   Yes
+		*/
+
+		    var ext = imgurl.split('.').pop();
+		    var thumb = imgurl.substr(0, imgurl.lastIndexOf(".")) + size + "." + ext;
+		    return thumb;
+		}
+
+	    </script>
+	</body>
+
+</html>

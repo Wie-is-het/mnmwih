@@ -1,3 +1,12 @@
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+//
+//                  PLACE YOUR COMMENTS HERE
+//
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+
+var one;
+var questionsLeft = 0,
+    attemptsLeft = 3;
 $(function() {
     $('.imgurImg').each(function() {
         src = $(this).attr('data-src');
@@ -6,97 +15,169 @@ $(function() {
     })
 
     var jsonHTML = $('#place-json').text();
-    var locals = jsonHTML.replace(/&quot;/g, '"');
+    var locals = jsonHTML.replace(/&quot;/g, '"');      //-----> PARSING THE JSON FROM THE PAGE
     locals = JSON.parse(locals);
+
+    var oneHTML = $('#place-json2').text();
+    var theOne = oneHTML.replace(/&quot;/g, '"');       //-----> PARSING THE JSON FROM THE PAGE
+    one = JSON.parse(theOne);
+    $('#place-json2').empty();
+
     //console.log(locals.properties.people);
 
-    for (var j = 0; j < locals.properties.people.length; j++) {
-        localProps = locals.properties.people[j];
-        //console.log(localProps);
+    $('.questions').empty();
 
-        switch (localProps.name.toLowerCase()) {
-            case 'sex':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Is it ' + localProps.possibilities[i] + '?</div>')
-                };
-                break;
-            case "glasses":
-                // for (var i = 0; i < localProps.possibilities.length; i++) {
-                $('.questions').append('<div class="quest">Does it wear ' + 'glasses' + '?</div>')
-                // };
-                break;
-            case 'facial hair':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Does he have a ' + localProps.possibilities[i] + '?</div>')
-                };
-                break;
-            case 'hair color':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Does it have  ' + localProps.possibilities[i] + ' Hair?</div>')
-                };
-                break;
-            case 'hair type':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Does it have  ' + localProps.possibilities[i] + ' Hair?</div>')
-                };
-                break;
-            case 'accesories':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Does it accesorize with ' + localProps.possibilities[i] + '?</div>')
-                };
-                break;
-            case 'eye color':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Does it have ' + localProps.possibilities[i] + ' eyes?</div>')
-                };
-                break;
-            case 'skin color':
-                for (var i = 0; i < localProps.possibilities.length; i++) {
-                    $('.questions').append('<div class="quest">Is it ' + localProps.possibilities[i] + ' ?</div>')
-                };
-                break;
-        }
+    var qString = '<h2>Questions</h2>'; //-----> BUILDING A STRING TO ECHO IN THE QUESTIONS BOX
+
+    for (var j = 0; j < locals.length; j++) {
+        localProps = locals[j];
+
+        var name = localProps.name;
+        var possibles = localProps.possibilities;
+
+        qString += '<h5>' + name + ' ? </h5>';
+
+        qString += '<div style="word-wrap:break-word;">';
+        for (var i = 0; i < possibles.length; i++) {
+            qString += '<a href="#" class="quest" data-type="' + name + '" data-what="' + possibles[i] + '">' + possibles[i] + '</a>&nbsp;&nbsp;';
+            questionsLeft++;
+        };
+        qString += '</div>';
     };
 
-    var qArr = [];
+    qString += ('<br><br>')
 
-    $('.quest').each(function() {
-        //console.log($(this).html());
-        qArr.push($(this).html());
-    });
+    $('.questions').html(qString);
 
-    $('.questions .quest').empty();
+    // var qArr = [];
 
-    //console.log(qArr);
+    // $('.quest').each(function() {
+    //     //console.log($(this).html());
+    //     qArr.push($(this).html());
+    // });
 
-    for (var i = 0; i < qArr.length; i++) {
-        $('select.q').append('<option>' + qArr[i] + '</option>');
-    };
+    // $('.questions').empty();
 
-    //Scaling .imgurImg 
-   //scaleImage('.object-item');
+    // //console.log(qArr);
+
+    // for (var i = 0; i < qArr.length; i++) {
+    //     $('.questions').append('<a href="#">' + qArr[i] + '</a><br>');
+    // };
+
+    //Scaling .imgurImg
+    //scaleImage('.object-item');
 
 
-    function scaleImage(attribute){
-        $(attribute).hover(function() {
-            $(this).css("cursor", "pointer");
-            $(this).animate({
-                width: "20%"
-            }, 'slow');
-
-        }, function() {
-            $(this).animate({
-                width: "16.5%"
-            }, 'slow');
-        })
-    }
+    // function scaleImage(attribute) {
+    //     $(attribute).hover(function() {
+    //         $(this).css("cursor", "pointer");
+    //         $(this).animate({
+    //             width: "20%"
+    //         }, 'slow');
+                                                        //-----------> Replaced by lightbox
+    //     }, function() {
+    //         $(this).animate({
+    //             width: "16.5%"
+    //         }, 'slow');
+    //     })
+    // }
     //for (var x = Things.length - 1; x >= 0; x--) {
     //    $(".photos .object-item:nth-child(" + x + ")").addClass('col-md-offset-1');
     //};
     //$(".photos .object-item:nth-child(5n+1)").addClass('col-md-offset-1');
+
+    // console.log(one.properties)
+
+    var onePropNames = []; //some handling for when the clicked answer properties aren't in the properties of the one
+    for (var key in one.properties) {
+        var propName = key.toLowerCase();
+        onePropNames.push(key);
+    };
+
+    $(document).on('click', '.quest', function() {
+        if (!$(this).hasClass('disabled')) { // see if the answer has been asked and thus has the class disabled
+            var thisData = $(this).data();
+
+            questionsLeft--;    //update te stats
+            updateStats();
+
+            for (var key in one.properties) {   //iterate through the properties of the correct answer (the one)
+
+                if (thisData.type.toLowerCase() == key.toLowerCase()) { // see if properties for the one and the question asked are of the same type (vb: hair, eye color, ...)
+
+                    // console.log('testing for shizzle');
+                    if (thisData.what.toLowerCase() == one.properties[key].toLowerCase()) { //compare the values of the one and the answer clicked
+                        // alert('correct')
+                        $(this).addClass('correct');
+                        $(this).addClass('disabled');
+
+                    } else {
+                        // if the answer is incorrect
+                        $(this).addClass('incorrect');
+                        $(this).addClass('disabled')
+                    }
+                } else if (!inArray(thisData.type.toLowerCase(), onePropNames)) {//some handling for when the clicked answer properties aren't in the properties of the one
+                    console.log('not applicable');
+                    $(this).addClass('incorrect');
+                    $(this).addClass('disabled')
+                }
+            };
+        }
+        // console.log($(this).data().type)
+    })
+
+    $('.btn-answer').click(function() {
+        checkAnswer();
+    })
+
+    updateStats();
 })
 
+function checkAnswer(){
+    //-----> THIS ONE SPEAKS FOR ITSELD
+     var userInput = $('.answer-input').val();
+        // console.log(userInput, one.name)
+        if (userInput.toLowerCase() == one.name.toLowerCase()) {
+            UserAnsweredCorrectly();
+        } else {
+            attemptsLeft--;
+            UserAnsweredWrong();
+        }
+        updateStats();
+}
 
+function updateStats() {
+    $('.attemps_left').html(attemptsLeft);
+    $('.questions_left').html(questionsLeft);
+}
+
+function UserAnsweredCorrectly() {
+    alert('U heeft gewonnen met nog ' + attemptsLeft + ' pogingen over, wilt u dit delen op Facebook?')
+}
+
+function UserAnsweredWrong() {
+    alert('U heeft niet gewonnen, \nU heeft nog' + attemptsLeft + ' pogingen over')
+}
+
+
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+
+//       DON'T FORGET TO MINIFY FOR PRODUCTION, SO THIS CODE WILL BE UNREADABLE AND MORE DIFFICULT TO HACK      //
+
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+//  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
+
+
+
+
+
+/*
+
+HELPER FUNCTIONS, please ignore
+
+
+ */
 /*
 For getting thumbnails from imgur
 */
@@ -115,4 +196,14 @@ h   Huge Thumbnail  1024x1024   Yes
     var ext = imgurl.split('.').pop();
     var thumb = imgurl.substr(0, imgurl.lastIndexOf(".")) + size + "." + ext;
     return thumb;
+}
+
+//for seeing if an item is in an array
+
+function inArray(needle, haystack) {
+    var length = haystack.length;
+    for (var i = 0; i < length; i++) {
+        if (haystack[i] == needle) return true;
+    }
+    return false;
 }

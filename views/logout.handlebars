@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logged out</title>
+    <link rel="icon" type="image/png" href="/public/favicon.png">
+    <style>
+    body, html {
+        font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #EFEFEF;
+    }
+    .error {
+        text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        width: 400px;
+        height: 200px;
+    }
+    h1 {
+        font-size: 120pt;
+        line-height: 0em;
+    }
+    p {
+    	text-align: left;
+        font-size: 12pt;
+        font-family: Monaco, Consolas, "Lucida Console", monospace;
+    }
+    marquee {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        marquee-speed: normal;
+        -webkit-marquee-speed: fast;
+    }
+    .rotation {
+        display: block;
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="error">
+        <h1>
+            <span class="rotation">: )</span>
+        </h1>
+        <p>
+            &gt; You have been logged out
+            <br><br>
+            <a href="/">Click here</a> to go the main page<br>
+            <a href="/admin">Click here</a> to go the admin page
+        </p>
+    </div>
+    <!-- <marquee>Wheeeee !!!</marquee> -->
+</body>
+
+</html>

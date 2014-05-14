@@ -3,21 +3,21 @@ blob.categorie = "people";
 blob.properties = new Object;
 
 $(function() {
-    $('.categorie-link').on('click', function() {
-        //UI
-        $('.categorie-link').removeClass('active');
-        $(this).addClass('active');
+    // $('.categorie-link').on('click', function() {
+    //     //UI
+    //     $('.categorie-link').removeClass('active');
+    //     $(this).addClass('active');
 
-        //logic
-        var clicked = $(this).data('categorie').toLowerCase();
+    //     //logic
+    //     var clicked = $(this).data('categorie').toLowerCase();
 
-        blob.categorie = clicked;
+    //     blob.categorie = clicked;
 
-        //UI
-        $('.attribute-options').hide();
-        $('.' + clicked + '-options').show();
-    })
+    //     //UI
+    //     // $('.attribute-options').hide();
 
+    // })
+     $('.people-options').show();
     $('.property').on('click',function(){
         //logic
         var group = $(this).data('group');
@@ -55,7 +55,7 @@ $(function() {
             return false;
         }
     })
-    
+
 })
 
 
@@ -82,7 +82,7 @@ function saveToDB() {
                 // var data = eval('(' + r+ ')');
                 console.log(data);
                 alert('you have succesfully added your object');
-                window.location.replace("/play");
+                window.location.replace("/");
             },
             error: function(e) {
                 var status, statusText;
@@ -92,7 +92,7 @@ function saveToDB() {
                      console.warn(e.responseText);
                 } else {
                     alert('you have succesfully added your object');
-                    window.location.replace("/play");
+                    window.location.replace("/");
                     status = "success"
                     statusText = "Success";
                 };
@@ -120,13 +120,14 @@ function pageValid(){
         $('#image-name').removeClass('red-border');
     }
 
-    if($('.categories').children('ul').children('li').children('a.active').length < 1){
-        alert('please pick a category');
-        valid= false;
-    }
+    // if($('.categories').children('ul').children('li').children('a.active').length < 1){
+    //     alert('please pick a category');
+    //     valid= false;
+    // }
 
-    var category = $('.categories .active').data('categorie').toLowerCase();
-    $('.'+category+'-options').each(function(){
+    // var category = $('.categories .active').data('categorie').toLowerCase();
+    var category = 'people';
+    $('.people-options').each(function(){
         var activePills = $(this).children('.group').children('ul').children('li').children('a.active').length;
         if(activePills == 0){
             alert('Please choose at least one attribute');

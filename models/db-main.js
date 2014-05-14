@@ -37,7 +37,7 @@ var Objects = new mongoose.Schema({
         index:false,
     },
     type: {
-    	type: String,
+        type: String,
         required: true,
         index:false,
     },
@@ -46,7 +46,22 @@ var Objects = new mongoose.Schema({
         required: true,
         index:false,
     },
-    properties: Object
+    properties: Object,
+    random: {
+        random: {type: [Number], default: function(){ return [Math.random(), Math.random()]}, index: '2d'}
+    }
+
+});
+
+var properties = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+        index:false,
+    },
+    possibilities: {
+        type: [String]
+    }
 
 });
 
@@ -65,9 +80,17 @@ User.pre('save', function(next) {
     next();
 });
 
+properties.pre('save', function(next) {
+    console.log('A property was saved to Mongo');
+    next();
+});
+
 var User = mongoose.model('user', User);
 var Objects = mongoose.model('objects', Objects);
 
+var Properties = mongoose.model('properties', properties);
+
 exports.objecti = Objects;
+exports.props = Properties;
 
     // exports.planets = planets; exports.apps = apps;
