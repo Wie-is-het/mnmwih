@@ -11,7 +11,7 @@ var passport = require('passport'),
 
 //config and stuff
 var config = {
-    allowedLogins: ['bartvanitterbeeck@gmail.com'],
+    allowedLogins: ['bartvanitterbeeck@gmail.com', 'nick_vdaele@hotmail.com', 'maarten_89@msn.com'],
     googleClientId: '902378923519-h9t13fp0d3mq2tf70rqih4c6su4865hn.apps.googleusercontent.com',
     googleClientSecret: 'zXcVylv4uGehSj-hQXn5ZWNi',
     googleCallbackURL: '/auth/google/callback'
