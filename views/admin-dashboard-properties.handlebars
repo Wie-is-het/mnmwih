@@ -70,7 +70,7 @@
 
 	    </div>
 	<script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
-	<script type="text/javascript" src="/public/js/formPolyfill.min.js"></script>
+	{{!-- // <script type="text/javascript" src="/public/js/formPolyfill.min.js"></script> --}}
 	    <script>
 	    	var templ =  '<div class="input-group">';
 				templ += '<input name="properties" class="form-control" required="required">';
@@ -89,7 +89,7 @@
 	    	})
 
 	    	$(document).ready(function(){
-	    	 $('#propForm').html5form();	//validation polyfill
+	    	 // $('#propForm').html5form();	//validation polyfill
 
 	    	 $('.btn-edit').on('click', function(){
 	    	 	var stuffs = $(this).data('stuff').split('///');
