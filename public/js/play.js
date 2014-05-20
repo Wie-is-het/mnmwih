@@ -4,9 +4,8 @@
 //
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
 
-var one;
-var questionsLeft = 0,
-    attemptsLeft = 3;
+var one, settings;
+
 $(function() {
     $('.imgurImg').each(function() {
         src = $(this).attr('data-src');
@@ -22,6 +21,12 @@ $(function() {
     var theOne = oneHTML.replace(/&quot;/g, '"');       //-----> PARSING THE JSON FROM THE PAGE
     one = JSON.parse(theOne);
     $('#place-json2').empty();
+	
+	var settingsHTML = $('#place-json3').text();
+	var theSettings = settingsHTML.replace(/&quot;/g, '"');       //-----> PARSING THE JSON FROM THE PAGE
+	settings = JSON.parse(theSettings);
+	
+	console.log(settings);
 
     //console.log(locals.properties.people);
 
@@ -40,7 +45,7 @@ $(function() {
         qString += '<div style="word-wrap:break-word;">';
         for (var i = 0; i < possibles.length; i++) {
             qString += '<a href="#" class="quest" data-type="' + name + '" data-what="' + possibles[i] + '">' + possibles[i] + '</a>&nbsp;&nbsp;';
-            questionsLeft++;
+            //settings.questionsLeft++;
         };
         qString += '</div>';
     };
@@ -98,7 +103,7 @@ $(function() {
         if (!$(this).hasClass('disabled')) { // see if the answer has been asked and thus has the class disabled
             var thisData = $(this).data();
 
-            questionsLeft--;    //update te stats
+            settings.questionsLeft--;    //update te stats
             updateStats();
 
             for (var key in one.properties) {   //iterate through the properties of the correct answer (the one)
@@ -140,23 +145,24 @@ function checkAnswer(){
         if (userInput.toLowerCase() == one.name.toLowerCase()) {
             UserAnsweredCorrectly();
         } else {
-            attemptsLeft--;
+            settings.answersLeft--;
             UserAnsweredWrong();
         }
         updateStats();
 }
 
 function updateStats() {
-    $('.attemps_left').html(attemptsLeft);
-    $('.questions_left').html(questionsLeft);
+	//console.log(settings.questionsLeft);
+    $('.attemps_left').html(settings.answersLeft);
+    $('.questions_left').html(settings.questionsLeft);
 }
 
 function UserAnsweredCorrectly() {
-    alert('U heeft gewonnen met nog ' + attemptsLeft + ' pogingen over, wilt u dit delen op Facebook?')
+    alert('U heeft gewonnen met nog ' + settings.answersLeft + ' pogingen over, wilt u dit delen op Facebook?')
 }
 
 function UserAnsweredWrong() {
-    alert('U heeft niet gewonnen, \nU heeft nog' + attemptsLeft + ' pogingen over')
+    alert('U heeft niet gewonnen, \nU heeft nog' + settings.answersLeft + ' pogingen over')
 }
 
 

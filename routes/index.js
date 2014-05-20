@@ -114,7 +114,8 @@ var play = function(req, res) {
                     title: 'Play',
                     locals: JSON.stringify(possibilitiesDocs),
                     data: docs,
-                    result: JSON.stringify(theOne)
+                    result: JSON.stringify(theOne),
+					settings: JSON.stringify({'answersLeft' : 3, 'questionsLeft' : 20})
                 };
                 return res.render(
                     'play', {
