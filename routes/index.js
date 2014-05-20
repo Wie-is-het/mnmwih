@@ -99,36 +99,44 @@ var upload = function(req, res) {
 
 var play = function(req, res) {
 
-    main.props.find(function(err, possibilitiesDocs) {
-        main.objecti.find().where('random').near([Math.random(), Math.random()]).sort({
-            'name': 1
-        }).limit(12).exec({}, function(err, docs) {
+	
+	main.setting.find(function(err, settingsDocs){
+	
+		main.props.find(function(err, possibilitiesDocs) {
+			main.objecti.find().where('random').near([Math.random(), Math.random()]).sort({
+				'name': 1
+			}).limit(12).exec({}, function(err, docs) {
 
-            if (!err) {
-                var rand = (Math.random() * docs.length).toFixed(0);
-                // console.log(docs[rand]);
-                var theOne = docs[rand];
+				if (!err) {
+					//console.log(settingsDocs);
+					var rand = (Math.random() * docs.length).toFixed(0);
+					// console.log(docs[rand]);
+					var theOne = docs[rand];
 
-                // console.log(docs);
-                res.locals = {
-                    title: 'Play',
-                    locals: JSON.stringify(possibilitiesDocs),
-                    data: docs,
-                    result: JSON.stringify(theOne),
-					settings: JSON.stringify({'answersLeft' : 3, 'questionsLeft' : 20})
-                };
-                return res.render(
-                    'play', {
-                        layout: false
-                    }
-                );
-                process.exit();
-            } else {
-                console.log(err)
-            }
+					// console.log(docs);
+					res.locals = {
+						title: 'Play',
+						locals: JSON.stringify(possibilitiesDocs),
+						data: docs,
+						result: JSON.stringify(theOne),
+						settings: JSON.stringify(settingsDocs)
+					};
+					return res.render(
+						'play', {
+							layout: false
+						}
+					);
+					process.exit();
+				} else {
+					console.log(err)
+				}
 
-        })
-    })
+			})
+		})
+						
+	});
+	
+    
 };
 
 

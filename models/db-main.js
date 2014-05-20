@@ -65,6 +65,19 @@ var properties = new mongoose.Schema({
 
 });
 
+var settings = new mongoose.Schema({
+	name: {
+		type: String,
+		required: true,
+		index: false,
+	},
+	value: {
+		type: Number,
+		required: true,
+		index: false
+	}
+});
+
 var User = new mongoose.Schema({
     openId: {type:String, required: true,unique: true}
 });
@@ -87,10 +100,12 @@ properties.pre('save', function(next) {
 
 var User = mongoose.model('user', User);
 var Objects = mongoose.model('objects', Objects);
+var Settings = mongoose.model('settings', settings);
 
 var Properties = mongoose.model('properties', properties);
 
 exports.objecti = Objects;
 exports.props = Properties;
+exports.setting = Settings;
 
     // exports.planets = planets; exports.apps = apps;
