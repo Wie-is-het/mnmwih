@@ -41,10 +41,26 @@ function Share()
 }
 function Tweet()
 {
-    var link = document.getElementById('twitterbutton');
-    link.setAttribute("data-text","This works");
-    twttr.widgets.load();  //very important
+   !function(d,s,id){
+        var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
+        if(!d.getElementById(id)){
+            js = d.createElement(s);js.id=id;
+            js.src=p+'://platform.twitter.com/widgets.js';
+            fjs.parentNode.insertBefore(js,fjs);
+        }
+    }(document, 'script', 'twitter-wjs');
 }
+</script>
+
+<script>
+    // !function(d,s,id){
+    //     var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
+    //     if(!d.getElementById(id)){
+    //         js = d.createElement(s);js.id=id;
+    //         js.src=p+'://platform.twitter.com/widgets.js';
+    //         fjs.parentNode.insertBefore(js,fjs);
+    //     }
+    // }(document, 'script', 'twitter-wjs');
 </script>
 
 <div class="wrap">
@@ -121,10 +137,9 @@ function Tweet()
                 <!--<div class="fb-like" data-href="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>-->
                 <div class"col-xs-4">
                     <a class="btn" onclick="Share()">Share</a>
-                </div>
-                <div class="col-xs-4">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Ik heb net deze score gehaald op Wie-is-het van MNM:" data-lang="nl" data-size="large" onclick="Tweet()">Tweeten</a>
-                <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
+                
+                <!-- gewone twitter btm is met class="twitter-share-button" met "btn" is er geen custom text en popup -->
+                 <a href="https://twitter.com/share" onclick="Tweet()" class="twitter-share-button" data-url="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-text="MNM games: wie is het? Ik heb gewonnen!" data-lang="nl" data-hashtags="mnmgames">Tweeten</a>
                 </div>
             </div>
 
