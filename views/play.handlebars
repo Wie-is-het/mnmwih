@@ -12,6 +12,7 @@
 <body class="main play">
 
 <div id="fb-root"></div>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 <script>
 
 (function(d, s, id) {
@@ -27,8 +28,6 @@ function Share()
     FB.ui(
     {
         method: 'share',
-        name: 'MNM TEST',
-        description: 'test test test',
         href: 'http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het',
     },
     function(response) 
@@ -36,9 +35,21 @@ function Share()
         if (response && !response.error_code) {
             alert('Posting completed.');
         } else {
-            alert('Error while posting.');
+            //alert('Error while posting.');
         }
     });
+}
+function Tweet()
+{
+    var link = document.createElement('a');
+    link.setAttribute('href', 'https://twitter.com/share');
+    link.setAttribute('class', 'twitter-share-button');
+    link.setAttribute('style', 'margin-top:5px;');
+    link.setAttribute("data-text" , "I just achieved a score of " + score + " on #2048Lagos a game where you find transport methods in lagos and score high." );
+    link.setAttribute("data-via" ,"denvycom") ;
+    link.setAttribute("data-size" ,"large") ;
+    this.lowermessageContainer.appendChild(link);
+    twttr.widgets.load();  //very important
 }
 </script>
 
@@ -117,7 +128,10 @@ function Share()
                 <div class"col-xs-4">
                     <a class="btn" onclick="Share()">Share</a>
                 </div>
-                
+                <div class="col-xs-4">
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Ik heb net deze score gehaald op Wie-is-het van MNM:" data-lang="nl" data-size="large" onclick="Tweet()">Tweeten</a>
+                <!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>-->
+                </div>
             </div>
 
                 <script id="place-json" type="application/json">
