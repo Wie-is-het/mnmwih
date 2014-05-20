@@ -41,14 +41,8 @@ function Share()
 }
 function Tweet()
 {
-    var link = document.createElement('a');
-    link.setAttribute('href', 'https://twitter.com/share');
-    link.setAttribute('class', 'twitter-share-button');
-    link.setAttribute('style', 'margin-top:5px;');
-    link.setAttribute("data-text" , "I just achieved a score of " + score + " on #2048Lagos a game where you find transport methods in lagos and score high." );
-    link.setAttribute("data-via" ,"denvycom") ;
-    link.setAttribute("data-size" ,"large") ;
-    this.lowermessageContainer.appendChild(link);
+    var link = document.getElementById('twitterbutton');
+    link.setAttribute("data-text","This works");
     twttr.widgets.load();  //very important
 }
 </script>
