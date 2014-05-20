@@ -1,117 +1,119 @@
 <!doctype html>
 <html>
-
-<head>
-    <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
-    <style>
-    .well{
-		margin-right: 5%;
-    }
-    .addInput{
-		margin-left: 15px;
-    }
-    .form-control{
-    	/*width: 50%;*/
-    }
-	a[href="#minus"]{
-		position: static;
-		right: 0;
-		/*top: 0;*/
-	}
-    </style>
-</head>
+	<head>
+		<title>{{title}}</title>
+		<link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+		<link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
+		<style>
+			.well{
+			margin-right: 5%;
+			}
+			.addInput{
+			margin-left: 15px;
+			}
+			.form-control{
+			/*width: 50%;*/
+			}
+			a[href="#minus"]{
+			position: static;
+			right: 0;
+			/*top: 0;*/
+			}
+			body .container {
+				margin-left: 30%;
+			}
+			
+		</style>
+	</head>
 	<body>
 		<div class="container">
 			<h3>Add properties</h3>
 			<form action="/saveProps" name="propForm" id="propForm">
-				<label for="name">Name</label><br>
-				<input name="name" class="form-control" required><br>
-				<br>
-				<label for="properties" class="pull-left">Properties</label>&nbsp;<a href="#" class="btn btn-xs btn-primary addInput pull-left" title="add input field">Add another input field</a>
-				<br><br>
-				<div id="propertiesInputCollect">
-
-					<div class="input-group">
-						<input name="properties" class="form-control" required="required">
-						<div class="input-group-btn">
-							<a href="#" class="btn btn-default minus">-</a>
-						</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="name">Name</label><br>
+						<input name="name" class="form-control" required><br>
 					</div>
-
-					<div class="input-group">
-						<input name="properties" class="form-control" required="required">
-						<div class="input-group-btn">
-							<a href="#" class="btn btn-default minus">-</a>
-						</div>
-					</div>
-
 				</div>
-				<br>
-				<input class="btn btn-success btn-block" type="submit" value="save">
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="properties" class="pull-left">Properties</label>&nbsp;<a href="#" class="btn btn-xs btn-primary addInput pull-left" title="add input field">Add another input field</a>
+						<br><br>
+						<div id="propertiesInputCollect">
+							<div class="input-group">
+								<input name="properties" class="form-control" required="required">
+								<div class="input-group-btn">
+									<a href="#" class="btn btn-default minus">-</a>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<input class="btn btn-success btn-block" type="submit" value="save">
+					</div>
+				</div>
 			</form>
-
 			<h3>Properties list</h3>
 			<div class="row">
-			{{#data}}
-				<div class="col-xs-12 well well-sm">
-				<h5>{{name}}</h5>
+				{{#data}}
+				<div class="col-xs-6 well well-sm">
+					<h5>{{name}}</h5>
 					{{#each possibilities}}
-						<div class="well well-sm">{{this}}</div>
+					<div class="well well-sm">{{this}}</div>
 					{{/each}}
-				<form action="/removeProps/{{_id}}" style="text-align: right;">
-					<a href="#" class="btn btn-warning btn-edit" data-name="{{name}}" data-stuff="{{#each possibilities}}{{this}}///{{/each}}">Edit</a>
-					<input type="submit" value="remove" class="btn btn-danger">
-				</form>
+					<form action="/removeProps/{{_id}}" style="text-align: right;">
+						<a href="#" class="btn btn-warning btn-edit" data-name="{{name}}" data-stuff="{{#each possibilities}}{{this}}///{{/each}}">Edit</a>
+						<input type="submit" value="remove" class="btn btn-danger">
+					</form>
 				</div>
-			{{/data}}
+				{{/data}}
 			</div>
-
-	    </div>
-	<script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
-	{{!-- // <script type="text/javascript" src="/public/js/formPolyfill.min.js"></script> --}}
-	    <script>
-	    	var templ =  '<div class="input-group">';
-				templ += '<input name="properties" class="form-control" required="required">';
-				templ += '<div class="input-group-btn">';
-				templ += 	'<a href="#" class="btn btn-default minus">-</a>';
-				templ += '</div>';
-				templ += '</div>';
-
-	    	$('.addInput').click(function(){
-	    		$('#propertiesInputCollect').append(templ);
-	    	})
-
-	    	$(document).on('click', 'a.minus', function(){
-	    		console.log($(this).parent('input-group-btn'))
-	    		$(this).parent().parent().remove();
-	    	})
-
-	    	$(document).ready(function(){
-	    	 // $('#propForm').html5form();	//validation polyfill
-
-	    	 $('.btn-edit').on('click', function(){
-	    	 	var stuffs = $(this).data('stuff').split('///');
-
-	    	 	var name = $(this).data('name');
-	    	 	$('input[name="name"]').val(name);
-
-	    	 	$('#propertiesInputCollect').empty();
-	    	 	for (var i = 0; i < stuffs.length-1; i++) {
-	    	 		var editTempl =  '<div class="input-group">';
-					editTempl += '<input value="'+stuffs[i]+'" name="properties" class="form-control" required="required">';
-					editTempl += '<div class="input-group-btn">';
-					editTempl += 	'<a href="#" class="btn btn-default minus">-</a>';
-					editTempl += '</div>';
-					editTempl += '</div>';
-
-					$('#propertiesInputCollect').append(editTempl);
-	    	 	};
-
-	    	 })
-	    })
-	    </script>
+		</div>
+		<script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+		{{!-- // <script type="text/javascript" src="/public/js/formPolyfill.min.js"></script> --}}
+		<script>
+			var templ =  '<div class="input-group">';
+			templ += '<input name="properties" class="form-control" required="required">';
+			templ += '<div class="input-group-btn">';
+			templ += 	'<a href="#" class="btn btn-default minus">-</a>';
+			templ += '</div>';
+			templ += '</div>';
+			
+			$('.addInput').click(function(){
+				$('#propertiesInputCollect').append(templ);
+			})
+			
+			$(document).on('click', 'a.minus', function(){
+				console.log($(this).parent('input-group-btn'))
+				$(this).parent().parent().remove();
+			})
+			
+			$(document).ready(function(){
+			 // $('#propForm').html5form();	//validation polyfill
+			
+			 $('.btn-edit').on('click', function(){
+			 	var stuffs = $(this).data('stuff').split('///');
+			
+			 	var name = $(this).data('name');
+			 	$('input[name="name"]').val(name);
+			
+			 	$('#propertiesInputCollect').empty();
+			 	for (var i = 0; i < stuffs.length-1; i++) {
+			 		var editTempl =  '<div class="input-group">';
+			editTempl += '<input value="'+stuffs[i]+'" name="properties" class="form-control" required="required">';
+			editTempl += '<div class="input-group-btn">';
+			editTempl += 	'<a href="#" class="btn btn-default minus">-</a>';
+			editTempl += '</div>';
+			editTempl += '</div>';
+			
+			$('#propertiesInputCollect').append(editTempl);
+			 	};
+			
+			 })
+			})
+		</script>
 	</body>
-
 </html>
