@@ -1,230 +1,222 @@
 <!doctype html>
 <html>
-
-<head>
-    <title>{{title}}</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/lightbox.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
-</head>
-
-<body class="main play">
-
-<div id="fb-root"></div>
-<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-<script>
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&appId=661188300617783&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-function Share()
-{
-    FB.ui(
-    {
-        method: 'share',
-        href: 'http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het',
-    },
-    function(response) 
-    {
-        if (response && !response.error_code) {
-            alert('Posting completed.');
-        } else {
-            //alert('Error while posting.');
-        }
-    });
-}
-function Tweet()
-{
-   !function(d,s,id){
-        var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
-        if(!d.getElementById(id)){
-            js = d.createElement(s);js.id=id;
-            js.src=p+'://platform.twitter.com/widgets.js';
-            fjs.parentNode.insertBefore(js,fjs);
-        }
-    }(document, 'script', 'twitter-wjs');
-}
-</script>
-
-<script>
-    // !function(d,s,id){
-    //     var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
-    //     if(!d.getElementById(id)){
-    //         js = d.createElement(s);js.id=id;
-    //         js.src=p+'://platform.twitter.com/widgets.js';
-    //         fjs.parentNode.insertBefore(js,fjs);
-    //     }
-    // }(document, 'script', 'twitter-wjs');
-</script>
-
-<div class="wrap">
-<div id="wrapper">
-    <div class="container">
-        {{!-- <div class="row">
-            <div class="logo col-xs-2">
-                <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
-            </div>
-            <div class="col-xs-3"></div>
-            <div class="col-xs-6">
-                <div class="play-nav row">
-                    <div class="col-xs-3 nav-item">MNM Home</div>
-                    <div class="col-xs-3 nav-item">Upload</div>
-                    <div class="col-xs-3 nav-item">News</div>
-                    <div class="col-xs-3 nav-item" id="audioControl">Listen Live</div>
-                </div>
-            </div>
-            <div class="col-xs-1"></div>
-        </div>
- --}}
-        <div class="row">
-            <div class="lb photos col-xs-8">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <h1>Wie is het?</h1>
-                    </div>
-                    <div class="upload-field col-xs-6">
-                        <a href="/upload" class="btn btn-success btn-block">Upload je eigen foto</a>
-                        <div class="mnm-flag-holder"></div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="row">
-                            {{#data}}
-                            <div class="object-item">
-                                <a href="{{image}}" data-lightbox="{{image}}" data-title="{{name}}"><img data-src="{{image}}" class="imgurImg" />
-                                <h4>{{name}}</h4></a>
-                                <br>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/lightbox.css">
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/public/img/favicon.ico">
+        <style>
+            .tweet{
+            margin-top:8px;
+            }
+        </style>
+    </head>
+    <body class="main play">
+        <div id="fb-root"></div>
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <script>
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&appId=661188300617783&version=v2.0";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            
+            function Share()
+            {
+                FB.ui(
+                {
+                    method: 'share',
+                    href: 'http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het',
+                },
+                function(response) 
+                {
+                    if (response && !response.error_code) {
+                        alert('Posting completed.');
+                    } else {
+                        //alert('Error while posting.');
+                    }
+                });
+            }
+            function Tweet()
+            {
+               !function(d,s,id){
+                    var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
+                    if(!d.getElementById(id)){
+                        js = d.createElement(s);js.id=id;
+                        js.src=p+'://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');
+            }
+        </script>
+        <script>
+            // !function(d,s,id){
+            //     var js,fjs = d.getElementsByTagName(s)[0],p = /^http:/.test(d.location)?'http':'https';
+            //     if(!d.getElementById(id)){
+            //         js = d.createElement(s);js.id=id;
+            //         js.src=p+'://platform.twitter.com/widgets.js';
+            //         fjs.parentNode.insertBefore(js,fjs);
+            //     }
+            // }(document, 'script', 'twitter-wjs');
+        </script>
+        <div class="wrap">
+            <div id="wrapper">
+                <div class="container">
+                    {{!-- 
+                    <div class="row">
+                        <div class="logo col-xs-2">
+                            <a href="/"><img src="/public/img/logo.png" alt="logo" /></a>
+                        </div>
+                        <div class="col-xs-3"></div>
+                        <div class="col-xs-6">
+                            <div class="play-nav row">
+                                <div class="col-xs-3 nav-item">MNM Home</div>
+                                <div class="col-xs-3 nav-item">Upload</div>
+                                <div class="col-xs-3 nav-item">News</div>
+                                <div class="col-xs-3 nav-item" id="audioControl">Listen Live</div>
                             </div>
-                        {{/data}}
+                        </div>
+                        <div class="col-xs-1"></div>
+                    </div>
+                    --}}
+                    <div class="row">
+                        <div class="lb photos col-xs-8">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <h1>Wie is het?</h1>
+                                </div>
+                                <div class="upload-field col-xs-6">
+                                    <a href="/upload" class="btn btn-success btn-block">Upload je eigen foto</a>
+                                    <div class="mnm-flag-holder"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="row">
+                                        {{#data}}
+                                        <div class="object-item">
+                                            <a href="{{image}}" data-lightbox="{{image}}" data-title="{{name}}">
+                                                <img data-src="{{image}}" class="imgurImg" />
+                                                <h4>{{name}}</h4>
+                                            </a>
+                                            <br>
+                                        </div>
+                                        {{/data}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 db questions">
+                            • Questions loading..<br><br>If this takes longer than 10 seconds, please try restarting the game by <a href="/"><strong>clicking here</strong></a>, and make sure you have javascript enabled<br><br>
+                        </div>
+                        <div class="answer-field">
+                            <div class="col-xs-4">
+                                <h2>Geef Antwoord:</h2>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="text" class="answer-input form-control almost-full-width" placeholder="geef hier uw antwoord in" list="names">
+                                <datalist id="names">
+                                    {{#data}}
+                                    <option value="{{name}}">{{name}}</option>
+                                    {{/data}}
+                                </datalist>
+                                <div class="mnm-flag-holder almost-full-width"></div>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-success btn-block btn-answer almost-full-width">Antwoord</a>
+                                <div class="mnm-flag-holder almost-full-width"></div>
+                            </div>
+                            <div class="col-xs-4 current-stats">
+                                • Nog <span class="attemps_left">0</span> pogingen over<br>
+                                • Nog <span class="questions_left">0</span> vragen over
+                            </div>
+                            <!-- SOCIAL MEDIA BUTTONS -->
+                            <div class="col-xs-1 tweet">
+                                <a href="https://twitter.com/share" onclick="Tweet()" class="twitter-share-button" data-url="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-text="MNM games: wie is het? Ik heb gewonnen!" data-lang="nl" data-hashtags="mnmgames">Tweeten</a>
+                            </div>
+                            <div class="col-xs-1">
+                                <a class="fb-share-button" data-href="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" onclick="Share()" data-type="button_count" ></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xs-4 db questions">
-                • Questions loading..<br><br>If this takes longer than 10 seconds, please try restarting the game by <a href="/"><strong>clicking here</strong></a>, and make sure you have javascript enabled<br><br>
-            </div>
-            <div class="answer-field">
-                <div class="col-xs-4">
-                    <h2>Geef Antwoord:</h2>
-                </div>
-                <div class="col-xs-4">
-
-                    <input type="text" class="answer-input form-control almost-full-width" placeholder="geef hier uw antwoord in" list="names">
-                    <datalist id="names">
-                        {{#data}}
-                        <option value="{{name}}">{{name}}</option>
-                        {{/data}}
-                    </datalist>
-                    <div class="mnm-flag-holder almost-full-width"></div>
-                </div>
-                <div class="col-xs-4">
-                    <a class="btn btn-success btn-block btn-answer almost-full-width">Antwoord</a>
-                    <div class="mnm-flag-holder almost-full-width"></div>
-                </div>
-                <div class="col-xs-4 current-stats">
-                    • Nog <span class="attemps_left">0</span> pogingen over<br>
-                    • Nog <span class="questions_left">0</span> vragen over
-                </div>
-
-                <!--<div class="fb-like" data-href="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>-->
-                <div class"col-xs-4">
-                    <a class="btn" onclick="Share()">Share</a>
-                
-                <!-- gewone twitter btm is met class="twitter-share-button" met "btn" is er geen custom text en popup -->
-                 <a href="https://twitter.com/share" onclick="Tweet()" class="twitter-share-button" data-url="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-text="MNM games: wie is het? Ik heb gewonnen!" data-lang="nl" data-hashtags="mnmgames">Tweeten</a>
-                </div>
-            </div>
-
-                <script id="place-json" type="application/json">
-                  {{locals}}
-                </script>
-                <script id="place-json2" type="application/json">
-                  {{result}}
-                </script>
-				  <script id="place-json3" type="application/json">
-                  {{settings}}
-                </script>
-                <!--
-                <select class="q form-control" style="margin:0 !important;">
-
-                </select>-->
-
-
-        </div>
-
-        <!--</div>
-            <div class="row questions">
-                    <h4>Questions</h4>
                     <script id="place-json" type="application/json">
-                      {{locals}}
+                        {{locals}}
                     </script>
-                    <select class="q form-control" style="margin:0 !important;">
-
-                    </select>
+                    <script id="place-json2" type="application/json">
+                        {{result}}
+                    </script>
+                    <script id="place-json3" type="application/json">
+                        {{settings}}
+                    </script>
+                    <!--
+                        <select class="q form-control" style="margin:0 !important;">
+                        
+                        </select>-->
+                </div>
+                <!--</div>
+                    <div class="row questions">
+                            <h4>Questions</h4>
+                            <script id="place-json" type="application/json">
+                              {{locals}}
+                            </script>
+                            <select class="q form-control" style="margin:0 !important;">
+                    
+                            </select>
+                    </div>
+                    </div>-->
+                <!-- <span>
+                    <h3>All the possible stuffs</h3>
+                    {{! Possible properties}}
+                    {{#locals.properties}}
+                        {{#people}}
+                        <h4>{{name}}</h4>
+                        {{#possibilities}}
+                        {{.}}-
+                        {{/possibilities}}
+                        {{/people}}
+                    
+                        {{#object}}
+                        <h4>{{name}}</h4>
+                        {{#possibilities}}
+                        {{.}}-
+                        {{/possibilities}}
+                        {{/object}}
+                    {{/locals.properties}}
+                    </span> -->
             </div>
-        </div>-->
-
-        <!-- <span>
-        <h3>All the possible stuffs</h3>
-        {{! Possible properties}}
-        {{#locals.properties}}
-            {{#people}}
-            <h4>{{name}}</h4>
-            {{#possibilities}}
-            {{.}}-
-            {{/possibilities}}
-            {{/people}}
-
-            {{#object}}
-            <h4>{{name}}</h4>
-            {{#possibilities}}
-            {{.}}-
-            {{/possibilities}}
-            {{/object}}
-        {{/locals.properties}}
-        </span> -->
-    </div>
-  </div>
-</div>
-<div class="audio">
-<!-- http://mp3.streampower.be/mnm-high.mp3 -->
-{{!-- <audio id="mnmRadio">
-  <source src="http://mp3.streampower.be/mnm-low.mp3" type="audio/mpeg">
-</audio>
-<a href="#" id="audioControl">Listen Live</a> --}}
-<script>
-var yourAudio = document.getElementById('mnmRadio'),
-    ctrl = document.getElementById('audioControl');
-
-// ctrl.onclick = function () {
-
-//     // Update the Button
-//     var pause = ctrl.innerHTML === 'Mute';
-//     ctrl.innerHTML = pause ? 'Listen Live' : 'Mute';
-
-//     // Update the Audio
-//     var method = pause ? 'pause' : 'play';
-//     yourAudio[method]();
-
-//     // Prevent Default Action
-//     return false;
-// };
-</script>
-</div>
-
-
-    <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
-    <script src="/public/js/lightbox.min.js"></script>
-    <script src="/public/js/play.js"></script>
-
-</body>
-
+        </div>
+        </div>
+        <div class="audio">
+            <!-- http://mp3.streampower.be/mnm-high.mp3 -->
+            {{!-- 
+            <audio id="mnmRadio">
+                <source src="http://mp3.streampower.be/mnm-low.mp3" type="audio/mpeg">
+            </audio>
+            <a href="#" id="audioControl">Listen Live</a> --}}
+            <script>
+                var yourAudio = document.getElementById('mnmRadio'),
+                    ctrl = document.getElementById('audioControl');
+                
+                // ctrl.onclick = function () {
+                
+                //     // Update the Button
+                //     var pause = ctrl.innerHTML === 'Mute';
+                //     ctrl.innerHTML = pause ? 'Listen Live' : 'Mute';
+                
+                //     // Update the Audio
+                //     var method = pause ? 'pause' : 'play';
+                //     yourAudio[method]();
+                
+                //     // Prevent Default Action
+                //     return false;
+                // };
+            </script>
+        </div>
+        <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+        <script src="/public/js/lightbox.min.js"></script>
+        <script src="/public/js/play.js"></script>
+    </body>
 </html>
