@@ -154,11 +154,9 @@ function checkAnswer(){
             if (answersLeft >= 1){
                 answersLeft--;
             }else{
-                var $err = $('.test').addClass('error-notification')
-                         .html('Oops! Geen pogingen over. Speel nog een keer!')
-                         .css('background-color', "#138BD3");
-                $(this).after($err);
-                $err.fadeIn('slow');
+                PlayAgain();
+                ShowNotification('Oops! Geen pogingen over. Speel nog een keer!', "#138BD3");
+                
             }
             UserAnsweredWrong();
         }
@@ -172,28 +170,36 @@ function updateStats() {
 }
 
 function UserAnsweredCorrectly() {
-    // alert('U heeft gewonnen met nog ' + answersLeft + ' pogingen over, wilt u dit delen op Facebook?');
-    var $err = $('.test').addClass('error-notification')
-                         .html('U heeft gewonnen met nog ' + answersLeft + ' pogingen over. Wilt u dit delen op Facebook?')
-                         .css('background-color', "#09306C");
-    $(this).after($err);
-    $err.fadeIn('slow');
+ 
+    ShowNotification('U heeft gewonnen met nog ' + answersLeft + ' pogingen over. Wilt u dit delen op Facebook?', "#09306C");
 }
 
 function UserAnsweredWrong() {
     
-    var $err = $('.test').addClass('error-notification')
-                         .html('U heeft niet gewonnen, \nU heeft nog ' + answersLeft + ' pogingen over. Speel nog een keer!')
-                         .css('background-color', "#D9001B");
+    ShowNotification('U heeft niet gewonnen, \nU heeft nog ' + answersLeft + ' pogingen over. Speel nog een keer!', "#D9001B");
+    
+}
+
+function ShowNotification(text, bgcolour) {
+    var text = text;
+    var bgcolour = bgcolour;
+
+    var $err = $('.text').addClass('error-notification')
+                         .html(text)
+                         .css('background-color', bgcolour);
     $(this).after($err);
     $err.fadeIn('slow');
- 
+
     // $('.error-notification').on('click', function() {
     //     console.log("I can click!");
     //     $(this).fadeOut('fast', function() { $(this).remove(); });
     // });
 }
 
+function PlayAgain() {
+    console.log("play again");
+     $('.btn-again').css("display", "block");
+}
 
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //

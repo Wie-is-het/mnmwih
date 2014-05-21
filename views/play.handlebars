@@ -23,6 +23,10 @@
                 font-size: 18px;
                 padding: 5px 12px 5px ;
             }
+            .btn-again {
+                position: relative;
+                display: none;
+            }
 
         </style>
     </head>
@@ -54,6 +58,7 @@
                     }
                 });
             }
+
             function Tweet()
             {
                !function(d,s,id){
@@ -121,8 +126,12 @@
                                 <h2>Geef Antwoord:</h2>
                             </div>
                              <div class="col-xs-4">
-                                <div class="test almost-full-width"></div>
+                                <div class="text almost-full-width"></div>
                             </div> 
+                             <div class="col-xs-4">
+                                <a class="btn btn-block btn-again almost-full-width">Nog een keer proberen!</a>
+                                <div class="mnm-flag-holder almost-full-width btn-again"></div>
+                            </div>
                             <div class="col-xs-4">
                                 <input type="text" class="answer-input form-control almost-full-width" placeholder="geef hier uw antwoord in" list="names">
                                 <datalist id="names">
