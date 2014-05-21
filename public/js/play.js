@@ -7,6 +7,7 @@
 var one, settings, answersLeft, questionsLeft;
 
 $(function() {
+
     $('.imgurImg').each(function() {
         src = $(this).attr('data-src');
         thumb = imgurThumb(src, 'b');
@@ -36,6 +37,7 @@ $(function() {
 
     //console.log(locals.properties.people);
 
+
     $('.questions').empty();
 
     var qString = '<h2>Questions</h2>'; //-----> BUILDING A STRING TO ECHO IN THE QUESTIONS BOX
@@ -59,45 +61,6 @@ $(function() {
     qString += ('<br><br>')
 
     $('.questions').html(qString);
-
-    // var qArr = [];
-
-    // $('.quest').each(function() {
-    //     //console.log($(this).html());
-    //     qArr.push($(this).html());
-    // });
-
-    // $('.questions').empty();
-
-    // //console.log(qArr);
-
-    // for (var i = 0; i < qArr.length; i++) {
-    //     $('.questions').append('<a href="#">' + qArr[i] + '</a><br>');
-    // };
-
-    //Scaling .imgurImg
-    //scaleImage('.object-item');
-
-
-    // function scaleImage(attribute) {
-    //     $(attribute).hover(function() {
-    //         $(this).css("cursor", "pointer");
-    //         $(this).animate({
-    //             width: "20%"
-    //         }, 'slow');
-                                                        //-----------> Replaced by lightbox
-    //     }, function() {
-    //         $(this).animate({
-    //             width: "16.5%"
-    //         }, 'slow');
-    //     })
-    // }
-    //for (var x = Things.length - 1; x >= 0; x--) {
-    //    $(".photos .object-item:nth-child(" + x + ")").addClass('col-md-offset-1');
-    //};
-    //$(".photos .object-item:nth-child(5n+1)").addClass('col-md-offset-1');
-
-    // console.log(one.properties)
 
     var onePropNames = []; //some handling for when the clicked answer properties aren't in the properties of the one
     for (var key in one.properties) {
@@ -128,20 +91,23 @@ $(function() {
                         $(this).addClass('disabled')
                     }
                 } else if (!inArray(thisData.type.toLowerCase(), onePropNames)) {//some handling for when the clicked answer properties aren't in the properties of the one
-                    console.log('not applicable');
+                    //console.log('not applicable');
                     $(this).addClass('incorrect');
                     $(this).addClass('disabled')
                 }
             };
         }
         // console.log($(this).data().type)
-    })
+    }); 
+
 
     $('.btn-answer').click(function() {
         checkAnswer();
     })
 
     updateStats();
+
+    
 })
 
 function checkAnswer(){
@@ -151,12 +117,12 @@ function checkAnswer(){
         if (userInput.toLowerCase() == one.name.toLowerCase()) {
             UserAnsweredCorrectly();
         } else {
-            if (answersLeft >= 1){
+            if (answersLeft >= 2){
                 answersLeft--;
+                UserAnsweredWrong();
             }else{
-                PlayAgain();
+                DisplayPlayButton();
                 ShowNotification('Oops! Geen pogingen over. Speel nog een keer!', "#138BD3");
-                
             }
             UserAnsweredWrong();
         }
@@ -184,6 +150,8 @@ function ShowNotification(text, bgcolour) {
     var text = text;
     var bgcolour = bgcolour;
 
+    $('.text').css("display", "block");
+
     var $err = $('.text').addClass('error-notification')
                          .html(text)
                          .css('background-color', bgcolour);
@@ -196,9 +164,29 @@ function ShowNotification(text, bgcolour) {
     // });
 }
 
+
+
 function PlayAgain() {
     console.log("play again");
-     $('.btn-again').css("display", "block");
+    $('.btn-again').css("display", "none");
+    $('.text').css("display", "none");
+
+    answersLeft = settings[0]["value"];
+    questionsLeft = settings[1]["value"];
+    updateStats();
+
+    if($(this).hasClass('disabled')){
+        var thisData = $(this).data();
+        $(this).removeClass('disabled');
+        $(this).removeClass('incorrect');
+        $(this).removeClass('correct');
+    }
+
+    updateStats();
+}
+
+function DisplayPlayButton(){
+    $('.btn-again').css("display", "block");
 }
 
 //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //
