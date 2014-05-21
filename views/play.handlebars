@@ -13,6 +13,17 @@
             h1{
                 color: #09306C;
             }
+          
+            .error-notification {
+                position: relative;
+                height: 50px;
+                border-radius: 3px;
+                color:#fff;
+                cursor:pointer;
+                font-size: 18px;
+                padding: 5px 12px 5px ;
+            }
+
         </style>
     </head>
     <body class="main play">
@@ -109,6 +120,9 @@
                             <div class="col-xs-4">
                                 <h2>Geef Antwoord:</h2>
                             </div>
+                             <div class="col-xs-4">
+                                <div class="test almost-full-width"></div>
+                            </div> 
                             <div class="col-xs-4">
                                 <input type="text" class="answer-input form-control almost-full-width" placeholder="geef hier uw antwoord in" list="names">
                                 <datalist id="names">
@@ -122,10 +136,12 @@
                                 <a class="btn btn-success btn-block btn-answer almost-full-width">Antwoord</a>
                                 <div class="mnm-flag-holder almost-full-width"></div>
                             </div>
+                            
                             <div class="col-xs-4 current-stats">
                                 • Nog <span class="attemps_left">0</span> pogingen over<br>
                                 • Nog <span class="questions_left">0</span> vragen over
                             </div>
+
                             <!-- SOCIAL MEDIA BUTTONS -->
                             <div class="col-xs-1 tweet">
                                 <a href="https://twitter.com/share" onclick="Tweet()" class="twitter-share-button" data-url="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" data-text="MNM games: wie is het? Ik heb gewonnen!" data-lang="nl" data-hashtags="mnmgames">Tweeten</a>
@@ -133,6 +149,7 @@
                             <div class="col-xs-1">
                                 <a class="fb-share-button" data-href="http://www.mnm.be/shows/mnm-games/mnm-games-wie-is-het" onclick="Share()" data-type="button_count" ></a>
                             </div>
+                            
                         </div>
                     </div>
                     <script id="place-json" type="application/json">
@@ -208,7 +225,8 @@
                 // };
             </script>
         </div>
-        <script type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+        <script  type="text/javascript" src="/public/js/vendor/jquery-2.1.0.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="/public/js/lightbox.min.js"></script>
         <script src="/public/js/play.js"></script>
     </body>

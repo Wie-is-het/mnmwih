@@ -151,7 +151,15 @@ function checkAnswer(){
         if (userInput.toLowerCase() == one.name.toLowerCase()) {
             UserAnsweredCorrectly();
         } else {
-            answersLeft--;
+            if (answersLeft >= 1){
+                answersLeft--;
+            }else{
+                var $err = $('.test').addClass('error-notification')
+                         .html('Oops! Geen pogingen over. Speel nog een keer!')
+                         .css('background-color', "#138BD3");
+                $(this).after($err);
+                $err.fadeIn('slow');
+            }
             UserAnsweredWrong();
         }
         updateStats();
@@ -164,11 +172,26 @@ function updateStats() {
 }
 
 function UserAnsweredCorrectly() {
-    alert('U heeft gewonnen met nog ' + answersLeft + ' pogingen over, wilt u dit delen op Facebook?')
+    // alert('U heeft gewonnen met nog ' + answersLeft + ' pogingen over, wilt u dit delen op Facebook?');
+    var $err = $('.test').addClass('error-notification')
+                         .html('U heeft gewonnen met nog ' + answersLeft + ' pogingen over. Wilt u dit delen op Facebook?')
+                         .css('background-color', "#09306C");
+    $(this).after($err);
+    $err.fadeIn('slow');
 }
 
 function UserAnsweredWrong() {
-    alert('U heeft niet gewonnen, \nU heeft nog' + answersLeft + ' pogingen over')
+    
+    var $err = $('.test').addClass('error-notification')
+                         .html('U heeft niet gewonnen, \nU heeft nog ' + answersLeft + ' pogingen over. Speel nog een keer!')
+                         .css('background-color', "#D9001B");
+    $(this).after($err);
+    $err.fadeIn('slow');
+ 
+    // $('.error-notification').on('click', function() {
+    //     console.log("I can click!");
+    //     $(this).fadeOut('fast', function() { $(this).remove(); });
+    // });
 }
 
 
